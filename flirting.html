@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimum French, Maximum Flirting</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; padding: 28px 24px 18px; text-align: center; border-bottom: 1.5px solid #000; }
+        .brand { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; color: #888; margin-bottom: 8px; }
+        .title { font-size: 18px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+        .container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; width: 100%; }
+        .card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
+        .card { width: 100%; height: 560px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .card.flipped { transform: rotateY(180deg); }
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1.5px solid #000; display: flex; flex-direction: column; justify-content: space-between; padding: 42px 28px; }
+        .card-back { transform: rotateY(180deg); }
+        .card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .french-text { font-size: 28px; font-weight: 300; line-height: 1.3; letter-spacing: 0.03em; margin-bottom: 28px; }
+        .audio-btn { background: #000; color: #fff; border: none; padding: 10px 28px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; }
+        .audio-btn:hover { background: #333; }
+        .english-text { font-size: 22px; font-weight: 400; color: #333; margin-bottom: 24px; line-height: 1.3; }
+        .meaning-text { font-size: 15px; font-weight: 300; color: #444; line-height: 1.6; max-width: 280px; }
+        .tap-hint { text-align: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #555; font-weight: 300; }
+        .navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 40px; }
+        .nav-btn { background: none; border: 1.5px solid #000; padding: 10px 20px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; }
+        .nav-btn:hover { background: #000; color: #fff; }
+        .nav-btn:disabled { opacity: 0.2; cursor: default; }
+        .nav-btn:disabled:hover { background: none; color: #000; }
+        .progress { font-size: 12px; letter-spacing: 1px; font-weight: 300; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="brand">Minimum French, Maximum Parisian</div>
+        <div class="title">Minimum French, Maximum Flirting</div>
+    </div>
+    <div class="container">
+        <div class="card-wrapper">
+            <div class="card" id="flashcard">
+                <div class="card-face card-front">
+                    <div class="card-content">
+                        <div class="french-text" id="french-text"></div>
+                        <button class="audio-btn" id="audio-btn">Listen</button>
+                    </div>
+                    <div class="tap-hint">tap to flip</div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-content">
+                        <div class="english-text" id="english-text"></div>
+                        <div class="meaning-text" id="meaning-text"></div>
+                    </div>
+                    <div class="tap-hint">tap to flip back</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <button class="nav-btn" id="prev-btn">← Prev</button>
+        <div class="progress"><span id="current">1</span> / <span id="total">30</span></div>
+        <button class="nav-btn" id="next-btn">Next →</button>
+    </div>
+    <script>
+        const cards = [
+            { french: "Je m'appelle…", english: "My name is…", meaning: "Always first" },
+            { french: "Enchanté(e)", english: "Nice to meet you", meaning: "Classic introduction" },
+            { french: "T'as du feu ?", english: "Got a lighter?", meaning: "The Paris opener" },
+            { french: "T'es du quartier ?", english: "You from around here?", meaning: "Local test" },
+            { french: "Tu connais cet endroit ?", english: "You know this place?", meaning: "Conversation starter" },
+            { french: "T'es seul(e) ?", english: "You alone?", meaning: "Availability check" },
+            { french: "Dis-moi…", english: "Tell me…", meaning: "Curiosity pull" },
+            { french: "C'est drôle", english: "That's funny", meaning: "The real connection" },
+            { french: "Je te vois", english: "I see you", meaning: "Noticed" },
+            { french: "Pas mal", english: "Not bad", meaning: "Means everything" },
+            { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" },
+            { french: "Vraiment", english: "Really", meaning: "Said with a look" },
+            { french: "T'as du style", english: "You have style", meaning: "The Parisian compliment" },
+            { french: "T'as du chien", english: "You've got spark", meaning: "Edgy local" },
+            { french: "T'es canon", english: "You're hot", meaning: "Straight fire" },
+            { french: "T'es beau / belle", english: "You're handsome / beautiful", meaning: "Classic" },
+            { french: "Tu as du charme", english: "You have charm", meaning: "Timeless" },
+            { french: "T'es cool", english: "You're cool", meaning: "Always works" },
+            { french: "Tu as de beaux yeux", english: "Beautiful eyes", meaning: "Poetic classic" },
+            { french: "Ça, c'est…", english: "Now that's…", meaning: "Very Parisian" },
+            { french: "Tentant", english: "Tempting", meaning: "One word. Loaded" },
+            { french: "Moi aussi", english: "Me too", meaning: "Mutual rapport" },
+            { french: "Peut-être", english: "Maybe", meaning: "Mystery tease" },
+            { french: "J'écoute", english: "I'm listening", meaning: "Intellectual foreplay" },
+            { french: "Tu me plais", english: "I like you", meaning: "Bold honesty" },
+            { french: "C'est vrai", english: "That's true", meaning: "Fuels the flirt" },
+            { french: "Tu fais quoi ce soir ?", english: "What tonight?", meaning: "The real question" },
+            { french: "On continue ailleurs ?", english: "Continue somewhere else?", meaning: "The escalation" },
+            { french: "C'est quoi ton contact ?", english: "What's your contact?", meaning: "Instagram era" },
+            { french: "On se revoit quand ?", english: "When next?", meaning: "To be continued" }
+        ];
+
+        let currentCard = 0;
+        const flashcard = document.getElementById('flashcard');
+        const frenchText = document.getElementById('french-text');
+        const englishText = document.getElementById('english-text');
+        const meaningText = document.getElementById('meaning-text');
+        const audioBtn = document.getElementById('audio-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentSpan = document.getElementById('current');
+        document.getElementById('total').textContent = cards.length;
+
+        function updateCard() {
+            const card = cards[currentCard];
+            frenchText.textContent = card.french;
+            englishText.textContent = card.english;
+            meaningText.textContent = card.meaning;
+            currentSpan.textContent = currentCard + 1;
+            flashcard.classList.remove('flipped');
+            prevBtn.disabled = currentCard === 0;
+            nextBtn.disabled = currentCard === cards.length - 1;
+        }
+
+        flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+        audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
+            utterance.lang = 'fr-FR';
+            utterance.rate = 0.85;
+            const voices = speechSynthesis.getVoices();
+            const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+            if (frenchVoice) utterance.voice = frenchVoice;
+            speechSynthesis.speak(utterance);
+        });
+        if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+        prevBtn.addEventListener('click', () => { if (currentCard > 0) { currentCard--; updateCard(); } });
+        nextBtn.addEventListener('click', () => { if (currentCard < cards.length - 1) { currentCard++; updateCard(); } });
+        updateCard();
+    </script>
+</body>
+</html>
