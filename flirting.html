@@ -6,12 +6,12 @@
     <title>Minimum French, Maximum Flirting</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-        .header { width: 100%; padding: 14px 24px 10px; text-align: center; border-bottom: 1px solid #222; }
+        body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; height: 100dvh; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
+        .header { width: 100%; padding: 14px 24px 10px; text-align: center; border-bottom: 1px solid #222; flex-shrink: 0; }
         .title { font-size: 14px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
-        .container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px 24px; width: 100%; }
+        .container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px 24px; width: 100%; min-height: 0; }
         .card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
-        .card { width: 100%; height: 460px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .card { width: 100%; aspect-ratio: 3/4; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
         .card.flipped { transform: rotateY(180deg); }
         .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 28px; background: #000; }
         .card-back { transform: rotateY(180deg); }
@@ -22,7 +22,7 @@
         .english-text { font-size: 24px; font-weight: 400; color: #fff; margin-bottom: 20px; line-height: 1.2; letter-spacing: 0.02em; }
         .meaning-text { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #aaa; line-height: 1.6; max-width: 300px; }
         .tap-hint { text-align: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; font-weight: 400; }
-        .navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 16px; }
+        .navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 8px 24px 16px; flex-shrink: 0; }
         .nav-btn { background: transparent; border: 1px solid #555; padding: 9px 18px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; color: #999; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
         .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
         .nav-btn:disabled { opacity: 1; cursor: default; color: #444; border-color: #333; }
@@ -96,37 +96,4 @@
         const flashcard = document.getElementById('flashcard');
         const frenchText = document.getElementById('french-text');
         const englishText = document.getElementById('english-text');
-        const meaningText = document.getElementById('meaning-text');
-        const audioBtn = document.getElementById('audio-btn');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const currentSpan = document.getElementById('current');
-        document.getElementById('total').textContent = cards.length;
-        function updateCard() {
-            const card = cards[currentCard];
-            frenchText.textContent = card.french;
-            englishText.textContent = card.english;
-            meaningText.textContent = card.meaning;
-            currentSpan.textContent = currentCard + 1;
-            flashcard.classList.remove('flipped');
-            prevBtn.disabled = currentCard === 0;
-            nextBtn.disabled = currentCard === cards.length - 1;
-        }
-        flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
-        audioBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
-            utterance.lang = 'fr-FR';
-            utterance.rate = 0.85;
-            const voices = speechSynthesis.getVoices();
-            const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
-            if (frenchVoice) utterance.voice = frenchVoice;
-            speechSynthesis.speak(utterance);
-        });
-        if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-        prevBtn.addEventListener('click', () => { if (currentCard > 0) { currentCard--; updateCard(); } });
-        nextBtn.addEventListener('click', () => { if (currentCard < cards.length - 1) { currentCard++; updateCard(); } });
-        updateCard();
-    </script>
-</body>
-</html>
+        const meaningText = document.getEleme
