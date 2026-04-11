@@ -87,4 +87,140 @@ const flirtingCards = [
 { french: "Tu as du charme", english: "You have charm", meaning: "Soft and elegant" },
 { french: "Dis-moi tout", english: "Tell me everything", meaning: "Curiosity pull" },
 { french: "Tu viens d'où ?", english: "Where are you from?", meaning: "Fast chemistry check" },
-{ french: "Tu fais quoi dans la vie ?"
+{ french: "Tu fais quoi dans la vie ?", english: "What do you do?", meaning: "Paris always asks" },
+{ french: "Tu sors souvent par ici ?", english: "You go out around here often?", meaning: "Scene check" },
+{ french: "Tu connais du monde ici ?", english: "You know people here?", meaning: "Social radar" },
+{ french: "Je t'ai repéré", english: "I noticed you", meaning: "Confident observation" },
+{ french: "Tentant", english: "Tempting", meaning: "One word. Loaded" },
+{ french: "Peut-être", english: "Maybe", meaning: "Mystery tease" },
+{ french: "Pourquoi pas", english: "Why not", meaning: "Open. Casual. Slightly teasing" },
+{ french: "Comme tu veux", english: "As you wish", meaning: "Detached. Playful. Dangerous" },
+{ french: "J'écoute", english: "I'm listening", meaning: "Intellectual foreplay" },
+{ french: "Là, j'avoue…", english: "Okay, I admit…", meaning: "Soft tension" },
+{ french: "Ça me plaît", english: "I like that", meaning: "Warm signal" },
+{ french: "Ton Insta ?", english: "Your Instagram?", meaning: "Modern contact move" },
+{ french: "On se capte ?", english: "Shall we meet up?", meaning: "Casual continuation" },
+{ french: "On continue ailleurs ?", english: "Shall we continue elsewhere?", meaning: "Smooth escalation" },
+{ french: "On se revoit quand ?", english: "When do I see you again?", meaning: "To be continued" }
+];
+
+const datingCards = [
+{ french: "T'as l'air intéressant(e)", english: "You seem interesting", meaning: "Strong opener" },
+{ french: "Tu me fais rire", english: "You make me laugh", meaning: "Easy connection" },
+{ french: "J'aime bien parler avec toi", english: "I like talking to you", meaning: "Interest confirmed" },
+{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+{ french: "Tu réponds toujours comme ça ?", english: "Are you always like this?", meaning: "Light tease" },
+{ french: "On match ?", english: "We match?", meaning: "App energy" },
+{ french: "Un verre ?", english: "A drink?", meaning: "Natural date starter" },
+{ french: "On dîne ?", english: "Dinner?", meaning: "Cleaner invite" },
+{ french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" },
+{ french: "On se voit quand ?", english: "When are we seeing each other?", meaning: "Push it forward" },
+{ french: "On arrête de parler ici ?", english: "Stop talking here?", meaning: "Move off app" },
+{ french: "Tu me plais grave", english: "I really like you", meaning: "Very French. Direct" },
+{ french: "Tu me fais de l'effet", english: "You have an effect on me", meaning: "Elegant attraction" },
+{ french: "T'es dangereux / dangereuse", english: "You're dangerous", meaning: "Charged. They know" },
+{ french: "Tu me rends fou / folle", english: "You drive me crazy", meaning: "Strong tension" },
+{ french: "J'ai du mal à être sage avec toi", english: "Hard to behave around you", meaning: "Suggestive" },
+{ french: "J'ai envie de toi", english: "I want you", meaning: "Clear desire" },
+{ french: "Je te veux", english: "I want you", meaning: "No confusion" },
+{ french: "Chez toi ou moi ?", english: "Your place or mine?", meaning: "The escalation" },
+{ french: "Tu restes ce soir ?", english: "You staying tonight?", meaning: "Soft invitation" },
+{ french: "Regarde-moi", english: "Look at me", meaning: "Direct tension" },
+{ french: "J'y pense encore", english: "I'm still thinking about it", meaning: "After-effect" },
+{ french: "J'ai pas oublié", english: "I haven't forgotten", meaning: "Memory plus desire" },
+{ french: "C'était parfait", english: "That was perfect", meaning: "Morning after" },
+{ french: "On se revoit ?", english: "See you again?", meaning: "Round two" },
+{ french: "Tu me manques", english: "I miss you", meaning: "Emotional shift" },
+{ french: "Week-end libre ?", english: "Free this weekend?", meaning: "Real progression" },
+{ french: "On essaie ?", english: "Shall we try?", meaning: "The relationship step" },
+{ french: "À bientôt ?", english: "See you soon?", meaning: "Turns a maybe into a plan" },
+{ french: "On verra", english: "We'll see", meaning: "The most French ending there is" }
+];
+
+let currentTab = 'flirting';
+let currentCard = 0;
+
+const flashcard = document.getElementById('flashcard');
+const frenchText = document.getElementById('french-text');
+const englishText = document.getElementById('english-text');
+const meaningText = document.getElementById('meaning-text');
+const audioBtn = document.getElementById('audio-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const currentSpan = document.getElementById('current');
+const totalSpan = document.getElementById('total');
+const tabBtns = document.querySelectorAll('.tab-btn');
+
+function getCards() {
+return currentTab === 'flirting' ? flirtingCards : datingCards;
+}
+
+function updateCard() {
+const cards = getCards();
+const card = cards[currentCard];
+frenchText.textContent = card.french;
+englishText.textContent = card.english;
+meaningText.textContent = card.meaning;
+currentSpan.textContent = currentCard + 1;
+totalSpan.textContent = cards.length;
+flashcard.classList.remove('flipped');
+prevBtn.disabled = currentCard === 0;
+nextBtn.disabled = currentCard === cards.length - 1;
+}
+
+function switchTab(tab) {
+currentTab = tab;
+currentCard = 0;
+updateCard();
+tabBtns.forEach(btn => {
+if (btn.dataset.tab === tab) {
+btn.classList.add('active');
+} else {
+btn.classList.remove('active');
+}
+});
+}
+
+tabBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+switchTab(btn.dataset.tab);
+});
+});
+
+flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+
+audioBtn.addEventListener('click', (e) => {
+e.stopPropagation();
+const cards = getCards();
+const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
+utterance.lang = 'fr-FR';
+utterance.rate = 0.85;
+const voices = speechSynthesis.getVoices();
+const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+if (frenchVoice) utterance.voice = frenchVoice;
+speechSynthesis.speak(utterance);
+});
+
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+prevBtn.addEventListener('click', () => {
+if (currentCard > 0) {
+currentCard--;
+updateCard();
+}
+});
+
+nextBtn.addEventListener('click', () => {
+const cards = getCards();
+if (currentCard < cards.length - 1) {
+currentCard++;
+updateCard();
+}
+});
+
+updateCard();
+
+</script>
+
+</body>
+</html>
