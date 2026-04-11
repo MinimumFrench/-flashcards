@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimum French, Maximum Paris — The Complete Collection</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+.header { width: 100%; padding: 20px 24px 16px; text-align: center; border-bottom: 1px solid #222; }
+.title { font-size: 15px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+.tabs { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0 12px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; transition: color 0.2s, border-bottom 0.2s; border-bottom: 1px solid transparent; }
+.tab-btn:hover { color: #fff; }
+.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
+.container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 24px; width: 100%; }
+.card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
+.card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+.card.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
+.card-back { transform: rotateY(180deg); }
+.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 20px; }
+.french-text { font-size: 24px; font-weight: 400; line-height: 1.3; letter-spacing: 0.02em; margin-bottom: 32px; color: #fff; }
+.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 24px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s; }
+.audio-btn:hover { background: #fff; color: #000; }
+.english-text { font-size: 24px; font-weight: 400; color: #fff; margin-bottom: 24px; line-height: 1.2; letter-spacing: 0.02em; }
+.meaning-text { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #aaa; line-height: 1.6; max-width: 300px; }
+.tap-hint { text-align: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; font-weight: 400; }
+.navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 40px; }
+.nav-btn { background: transparent; border: 1px solid #555; padding: 9px 18px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; color: #999; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+.nav-btn:disabled { opacity: 1; cursor: default; color: #444; border-color: #333; }
+.nav-btn:disabled:hover { background: transparent; color: #444; border-color: #333; }
+.progress { font-size: 12px; letter-spacing: 1px; font-weight: 400; color: #999; }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Minimum French, Maximum Paris</div>
+<div class="tabs">
+<button class="tab-btn active" data-tab="flirting">Flirting</button>
+<button class="tab-btn" data-tab="dating">Dating</button>
+<button class="tab-btn" data-tab="wine">Wine</button>
+<button class="tab-btn" data-tab="dine">Dine</button>
+</div>
+</div>
+
+<div class="container">
+<div class="card-wrapper">
+<div class="card" id="flashcard">
+<div class="card-face card-front">
+<div class="card-content">
+<div class="french-text" id="french-text">Enchanté</div>
+<button class="audio-btn" id="audio-btn">Listen</button>
+</div>
+<div class="tap-hint">tap to flip</div>
+</div>
+<div class="card-face card-back">
+<div class="card-content">
+<div class="english-text" id="english-text">Nice to meet you</div>
+<div class="meaning-text" id="meaning-text">Simple. Smooth. French</div>
+</div>
+<div class="tap-hint">tap to flip back</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="navigation">
+<button class="nav-btn" id="prev-btn">&#8592; Prev</button>
+<div class="progress"><span id="current">1</span> / <span id="total">30</span></div>
+<button class="nav-btn" id="next-btn">Next &#8594;</button>
+</div>
+
+<script>
+const flirtingCards = [
+{ french: "Enchanté", english: "Nice to meet you", meaning: "Simple. Smooth. French" },
+{ french: "Je peux ?", english: "May I?", meaning: "Minimal. Confident. Paris" },
+{ french: "Tu m'intrigues", english: "You intrigue me", meaning: "Modern. Magnetic" },
+{ french: "T'es du quartier ?", english: "You from around here?", meaning: "Local test" },
+{ french: "Tu viens souvent ici ?", english: "You come here often?", meaning: "Classic opener" },
+{ french: "Tu attends quelqu'un ?", english: "Are you waiting for someone?", meaning: "Elegant check" },
+{ french: "T'as un truc en plus", english: "You've got something extra", meaning: "Intrigue compliment" },
+{ french: "Pas mal", english: "Not bad", meaning: "Understated attraction" },
+{ french: "T'es mon style", english: "You're my type", meaning: "Direct hit" },
+{ french: "J'aime ton vibe", english: "I like your vibe", meaning: "Modern. Light. Flirty" },
+{ french: "T'es canon", english: "You're hot", meaning: "Straight fire" },
+{ french: "T'es beau / belle", english: "You're beautiful", meaning: "Classic" },
+{ french: "Tu as du charme", english: "You have charm", meaning: "Soft and elegant" },
+{ french: "Dis-moi tout", english: "Tell me everything", meaning: "Curiosity pull" },
+{ french: "Tu viens d'où ?", english: "Where are you from?", meaning: "Fast chemistry check" },
+{ french: "Tu fais quoi dans la vie ?", english: "What do you do?", meaning: "Paris always asks" },
+{ french: "Tu sors souvent par ici ?", english: "You go out around here often?", meaning: "Scene check" },
+{ french: "Tu connais du monde ici ?", english: "You know people here?", meaning: "Social radar" },
+{ french: "Je t'ai repéré", english: "I noticed you", meaning: "Confident observation" },
+{ french: "Tentant", english: "Tempting", meaning: "One word. Loaded" },
+{ french: "Peut-être", english: "Maybe", meaning: "Mystery tease" },
+{ french: "Pourquoi pas", english: "Why not", meaning: "Open. Casual. Slightly teasing" },
+{ french: "Comme tu veux", english: "As you wish", meaning: "Detached. Playful. Dangerous" },
+{ french: "J'écoute", english: "I'm listening", meaning: "Intellectual foreplay" },
+{ french: "Là, j'avoue…", english: "Okay, I admit…", meaning: "Soft tension" },
+{ french: "Ça me plaît", english: "I like that", meaning: "Warm signal" },
+{ french: "Ton Insta ?", english: "Your Instagram?", meaning: "Modern contact move" },
+{ french: "On se capte ?", english: "Shall we meet up?", meaning: "Casual continuation" },
+{ french: "On continue ailleurs ?", english: "Shall we continue elsewhere?", meaning: "Smooth escalation" },
+{ french: "On se revoit quand ?", english: "When do I see you again?", meaning: "To be continued" }
+];
+
+const datingCards = [
+{ french: "T'as l'air intéressant(e)", english: "You seem interesting", meaning: "Strong opener" },
+{ french: "Tu me fais rire", english: "You make me laugh", meaning: "Easy connection" },
+{ french: "J'aime bien parler avec toi", english: "I like talking to you", meaning: "Interest confirmed" },
+{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+{ french: "Tu réponds toujours comme ça ?", english: "Are you always like this?", meaning: "Light tease" },
+{ french: "On match ?", english: "We match?", meaning: "App energy" },
+{ french: "Un verre ?", english: "A drink?", meaning: "Natural date starter" },
+{ french: "On dîne ?", english: "Dinner?", meaning: "Cleaner invite" },
+{ french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" },
+{ french: "On se voit quand ?", english: "When are we seeing each other?", meaning: "Push it forward" },
+{ french: "On arrête de parler ici ?", english: "Stop talking here?", meaning: "Move off app" },
+{ french: "Tu me plais grave", english: "I really like you", meaning: "Very French. Direct" },
+{ french: "Tu me fais de l'effet", english: "You have an effect on me", meaning: "Elegant attraction" },
+{ french: "T'es dangereux / dangereuse", english: "You're dangerous", meaning: "Charged. They know" },
+{ french: "Tu me rends fou / folle", english: "You drive me crazy", meaning: "Strong tension" },
+{ french: "J'ai du mal à être sage avec toi", english: "Hard to behave around you", meaning: "Suggestive" },
+{ french: "J'ai envie de toi", english: "I want you", meaning: "Clear desire" },
+{ french: "Je te veux", english: "I want you", meaning: "No confusion" },
+{ french: "Chez toi ou moi ?", english: "Your place or mine?", meaning: "The escalation" },
+{ french: "Tu restes ce soir ?", english: "You staying tonight?", meaning: "Soft invitation" },
+{ french: "Regarde-moi", english: "Look at me", meaning: "Direct tension" },
+{ french: "J'y pense encore", english: "I'm still thinking about it", meaning: "After-effect" },
+{ french: "J'ai pas oublié", english: "I haven't forgotten", meaning: "Memory plus desire" },
+{ french: "C'était parfait", english: "That was perfect", meaning: "Morning after" },
+{ french: "On se revoit ?", english: "See you again?", meaning: "Round two" },
+{ french: "Tu me manques", english: "I miss you", meaning: "Emotional shift" },
+{ french: "Week-end libre ?", english: "Free this weekend?", meaning: "Real progression" },
+{ french: "On essaie ?", english: "Shall we try?", meaning: "The relationship step" },
+{ french: "À bientôt ?", english: "See you soon?", meaning: "Turns a maybe into a plan" },
+{ french: "On verra", english: "We'll see", meaning: "The most French ending there is" }
+];
+
+const wineCards = [
+{ french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
+{ french: "Vin de la maison", english: "House wine", meaning: "Always the right call" },
+{ french: "Un verre de rouge", english: "Glass of red", meaning: "Meat's partner" },
+{ french: "Un verre de blanc", english: "Glass of white", meaning: "Seafood + apéro" },
+{ french: "Un verre de rosé", english: "Glass of rosé", meaning: "Summer essential" },
+{ french: "On prend une bouteille ?", english: "Shall we get a bottle?", meaning: "The upgrade" },
+{ french: "Sec", english: "Dry", meaning: "Safest choice" },
+{ french: "Léger", english: "Light-bodied", meaning: "Easy drinking" },
+{ french: "Corsé", english: "Full-bodied", meaning: "Richer red" },
+{ french: "Fruité", english: "Fruity", meaning: "Soft and easy" },
+{ french: "Frais", english: "Fresh", meaning: "Most useful word" },
+{ french: "Quel vin avec ce plat ?", english: "Which wine with this dish?", meaning: "Smart move" },
+{ french: "C'est quel millésime ?", english: "What's the vintage?", meaning: "Sounds serious" },
+{ french: "Vous conseillez quoi ?", english: "What do you recommend?", meaning: "Best shortcut" },
+{ french: "Vous avez quelque chose de bon, moins cher ?", english: "Something good, less expensive?", meaning: "Smart, not cheap" },
+{ french: "Pour une occasion spéciale", english: "For a special occasion", meaning: "When it matters" },
+{ french: "Il est très bon", english: "It's very good", meaning: "Safe approval" },
+{ french: "J'aime bien celui-là", english: "I like this one", meaning: "Natural reaction" },
+{ french: "Un Bordeaux", english: "Bordeaux", meaning: "Reference red" },
+{ french: "Un Sancerre", english: "Sancerre", meaning: "Bistro white" },
+{ french: "Un Chinon", english: "Chinon", meaning: "Classic red" },
+{ french: "Un Chablis", english: "Chablis", meaning: "Crisp favourite" },
+{ french: "Un Muscadet", english: "Muscadet", meaning: "Seafood go-to" },
+{ french: "Un Bourgogne", english: "Burgundy", meaning: "Elegant default" },
+{ french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" },
+{ french: "Encore un verre ?", english: "Another glass?", meaning: "Always happens" },
+{ french: "On reprend la même chose ?", english: "Same again?", meaning: "Very Paris" },
+{ french: "Une dernière ?", english: "One last one?", meaning: "Never the last" },
+{ french: "On continue ?", english: "Shall we continue?", meaning: "Open-ended" },
+{ french: "C'est parfait comme ça", english: "This is perfect like this", meaning: "Know when to stop" }
+];
+
+const dineCards = [
+{ french: "Bonjour", english: "Hello", meaning: "Always first" },
+{ french: "Bonsoir", english: "Good evening", meaning: "After sunset" },
+{ french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+{ french: "En terrasse ?", english: "Outside?", meaning: "Paris default" },
+{ french: "J'ai une réservation au nom de…", english: "I have a reservation under…", meaning: "Reservation opener" },
+{ french: "On n'est pas pressés", english: "We're not in a hurry", meaning: "Very Paris" },
+{ french: "Le plat du jour", english: "Dish of the day", meaning: "Safe choice" },
+{ french: "Qu'est-ce que vous recommandez ?", english: "What do you recommend?", meaning: "Smart move" },
+{ french: "C'est quoi… ?", english: "What is this?", meaning: "When the menu loses you" },
+{ french: "Je vais prendre…", english: "I'll have…", meaning: "How the order happens" },
+{ french: "Une carafe d'eau", english: "Tap water", meaning: "Always free" },
+{ french: "Vous avez quelque chose sans gluten ?", english: "Do you have anything gluten-free?", meaning: "The modern question" },
+{ french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "French steak default" },
+{ french: "C'est pour partager", english: "It's to share", meaning: "Useful at any table" },
+{ french: "Du pain, s'il vous plaît", english: "More bread, please", meaning: "No extra charge" },
+{ french: "Du sel, s'il vous plaît", english: "Salt, please", meaning: "Fix it" },
+{ french: "On peut avoir un peu plus de temps ?", english: "Can we have a bit more time?", meaning: "Useful pause" },
+{ french: "On prend quoi ?", english: "What are we getting?", meaning: "Group-table essential" },
+{ french: "C'est bon", english: "It's good", meaning: "Polite approval" },
+{ french: "Pas mal", english: "Not bad", meaning: "High praise in Paris" },
+{ french: "C'est parfait", english: "It's perfect", meaning: "Maximum compliment" },
+{ french: "C'était délicieux", english: "That was delicious", meaning: "Stronger praise" },
+{ french: "J'adore", english: "I love it", meaning: "Simple approval" },
+{ french: "On reprend ça ?", english: "Should we get that again?", meaning: "Good sign" },
+{ french: "Un café", english: "Espresso", meaning: "Meal ending" },
+{ french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" },
+{ french: "On partage", english: "We split", meaning: "Clean. Direct" },
+{ french: "Je t'invite", english: "My treat", meaning: "Classic gesture" },
+{ french: "Par carte", english: "By card", meaning: "Modern Paris" },
+{ french: "Bonne soirée", english: "Have a nice evening", meaning: "Elegant exit" }
+];
+
+let currentTab = 'flirting';
+let currentCard = 0;
+const flashcard = document.getElementById('flashcard');
+const frenchText = document.getElementById('french-text');
+const englishText = document.getElementById('english-text');
+const meaningText = document.getElementById('meaning-text');
+const audioBtn = document.getElementById('audio-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const currentSpan = document.getElementById('current');
+const tabBtns = document.querySelectorAll('.tab-btn');
+
+function getCards() {
+  if (currentTab === 'flirting') return flirtingCards;
+  if (currentTab === 'dating') return datingCards;
+  if (currentTab === 'wine') return wineCards;
+  if (currentTab === 'dine') return dineCards;
+}
+
+function updateCard() {
+  const cards = getCards();
+  const card = cards[currentCard];
+  frenchText.textContent = card.french;
+  englishText.textContent = card.english;
+  meaningText.textContent = card.meaning;
+  currentSpan.textContent = currentCard + 1;
+  flashcard.classList.remove('flipped');
+  prevBtn.disabled = currentCard === 0;
+  nextBtn.disabled = currentCard === cards.length - 1;
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  currentCard = 0;
+  updateCard();
+  tabBtns.forEach(btn => {
+    if (btn.dataset.tab === tab) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    switchTab(btn.dataset.tab);
+  });
+});
+
+flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+
+audioBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const cards = getCards();
+  const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
+  utterance.lang = 'fr-FR';
+  utterance.rate = 0.85;
+  const voices = speechSynthesis.getVoices();
+  const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+  if (frenchVoice) utterance.voice = frenchVoice;
+  speechSynthesis.speak(utterance);
+});
+
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+prevBtn.addEventListener('click', () => {
+  if (currentCard > 0) {
+    currentCard--;
+    updateCard();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  const cards = getCards();
+  if (currentCard < cards.length - 1) {
+    currentCard++;
+    updateCard();
+  }
+});
+
+updateCard();
+
+</script>
+
+</body>
+</html>
