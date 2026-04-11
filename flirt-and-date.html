@@ -25,7 +25,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 .card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
 
-.card { width: 100%; height: 480px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+.card { width: 100%; height: 380px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
 
 .card.flipped { transform: rotateY(180deg); }
 
@@ -47,7 +47,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 .tap-hint { text-align: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; font-weight: 400; }
 
-.navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 8px; }
+.navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 0; }
 
 .nav-btn { background: transparent; border: 1px solid #fff; padding: 9px 18px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; color: #fff; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
 
@@ -76,15 +76,15 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="card" id="flashcard">
 <div class="card-face card-front">
 <div class="card-content">
-<div class="french-text" id="french-text"></div>
+<div class="french-text" id="french-text">Enchanté</div>
 <button class="audio-btn" id="audio-btn">Listen</button>
 </div>
 <div class="tap-hint">tap to flip</div>
 </div>
 <div class="card-face card-back">
 <div class="card-content">
-<div class="english-text" id="english-text"></div>
-<div class="meaning-text" id="meaning-text"></div>
+<div class="english-text" id="english-text">Nice to meet you</div>
+<div class="meaning-text" id="meaning-text">Simple. Smooth. French</div>
 </div>
 <div class="tap-hint">tap to flip back</div>
 </div>
@@ -134,4 +134,126 @@ const flirtingCards = [
 ];
 
 const datingCards = [
-{ french: "T'as l'air intéressant(e)", english: "You seem interesting", meaning: "Strong o
+{ french: "T'as l'air intéressant(e)", english: "You seem interesting", meaning: "Strong opener" },
+{ french: "Tu me fais rire", english: "You make me laugh", meaning: "Easy connection" },
+{ french: "J'aime bien parler avec toi", english: "I like talking to you", meaning: "Interest confirmed" },
+{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+{ french: "Tu réponds toujours comme ça ?", english: "Are you always like this?", meaning: "Light tease" },
+{ french: "On match ?", english: "We match?", meaning: "App energy" },
+{ french: "Un verre ?", english: "A drink?", meaning: "Natural date starter" },
+{ french: "On dîne ?", english: "Dinner?", meaning: "Cleaner invite" },
+{ french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" },
+{ french: "On se voit quand ?", english: "When are we seeing each other?", meaning: "Push it forward" },
+{ french: "On arrête de parler ici ?", english: "Stop talking here?", meaning: "Move off app" },
+{ french: "Tu me plais grave", english: "I really like you", meaning: "Very French. Direct" },
+{ french: "Tu me fais de l'effet", english: "You have an effect on me", meaning: "Elegant attraction" },
+{ french: "T'es dangereux / dangereuse", english: "You're dangerous", meaning: "Charged. They know" },
+{ french: "Tu me rends fou / folle", english: "You drive me crazy", meaning: "Strong tension" },
+{ french: "J'ai du mal à être sage avec toi", english: "Hard to behave around you", meaning: "Suggestive" },
+{ french: "J'ai envie de toi", english: "I want you", meaning: "Clear desire" },
+{ french: "Je te veux", english: "I want you", meaning: "No confusion" },
+{ french: "Chez toi ou moi ?", english: "Your place or mine?", meaning: "The escalation" },
+{ french: "Tu restes ce soir ?", english: "You staying tonight?", meaning: "Soft invitation" },
+{ french: "Regarde-moi", english: "Look at me", meaning: "Direct tension" },
+{ french: "J'y pense encore", english: "I'm still thinking about it", meaning: "After-effect" },
+{ french: "J'ai pas oublié", english: "I haven't forgotten", meaning: "Memory plus desire" },
+{ french: "C'était parfait", english: "That was perfect", meaning: "Morning after" },
+{ french: "On se revoit ?", english: "See you again?", meaning: "Round two" },
+{ french: "Tu me manques", english: "I miss you", meaning: "Emotional shift" },
+{ french: "Week-end libre ?", english: "Free this weekend?", meaning: "Real progression" },
+{ french: "On essaie ?", english: "Shall we try?", meaning: "The relationship step" },
+{ french: "À bientôt ?", english: "See you soon?", meaning: "Turns a maybe into a plan" },
+{ french: "On verra", english: "We'll see", meaning: "The most French ending there is" }
+];
+
+let currentTab = 'flirting';
+let currentCard = 0;
+
+const flashcard = document.getElementById('flashcard');
+const frenchText = document.getElementById('french-text');
+const englishText = document.getElementById('english-text');
+const meaningText = document.getElementById('meaning-text');
+const audioBtn = document.getElementById('audio-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const currentSpan = document.getElementById('current');
+const totalSpan = document.getElementById('total');
+const tabBtns = document.querySelectorAll('.tab-btn');
+
+document.getElementById('total').textContent = flirtingCards.length;
+
+function getCards() {
+return currentTab === 'flirting' ? flirtingCards : datingCards;
+}
+
+function updateCard() {
+const cards = getCards();
+const card = cards[currentCard];
+
+frenchText.textContent = card.french;
+englishText.textContent = card.english;
+meaningText.textContent = card.meaning;
+currentSpan.textContent = currentCard + 1;
+
+flashcard.classList.remove('flipped');
+prevBtn.disabled = currentCard === 0;
+nextBtn.disabled = currentCard === cards.length - 1;
+}
+
+function switchTab(tab) {
+currentTab = tab;
+currentCard = 0;
+updateCard();
+
+tabBtns.forEach(btn => {
+if (btn.dataset.tab === tab) {
+btn.classList.add('active');
+} else {
+btn.classList.remove('active');
+}
+});
+}
+
+tabBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+switchTab(btn.dataset.tab);
+});
+});
+
+flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+
+audioBtn.addEventListener('click', (e) => {
+e.stopPropagation();
+const cards = getCards();
+const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
+utterance.lang = 'fr-FR';
+utterance.rate = 0.85;
+const voices = speechSynthesis.getVoices();
+const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+if (frenchVoice) utterance.voice = frenchVoice;
+speechSynthesis.speak(utterance);
+});
+
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+prevBtn.addEventListener('click', () => {
+if (currentCard > 0) {
+currentCard--;
+updateCard();
+}
+});
+
+nextBtn.addEventListener('click', () => {
+const cards = getCards();
+if (currentCard < cards.length - 1) {
+currentCard++;
+updateCard();
+}
+});
+
+updateCard();
+
+</script>
+
+</body>
+</html>
