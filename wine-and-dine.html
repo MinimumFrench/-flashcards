@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minimum French, Maximum Wine & Dine</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+.header { width: 100%; padding: 24px 24px 16px; text-align: center; border-bottom: 1px solid #222; }
+.title { font-size: 14px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
+.tabs { display: flex; justify-content: center; gap: 40px; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0 12px 0; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; transition: color 0.2s, border-bottom 0.2s; border-bottom: 1px solid transparent; }
+.tab-btn:hover { color: #fff; }
+.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
+.container { flex: 1; display: flex; align-items: center; justify-content: center; padding: 32px 24px; width: 100%; }
+.card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
+.card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+.card.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
+.card-back { transform: rotateY(180deg); }
+.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 20px; }
+.french-text { font-size: 24px; font-weight: 400; line-height: 1.3; letter-spacing: 0.02em; margin-bottom: 32px; color: #fff; }
+.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 24px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s; }
+.audio-btn:hover { background: #fff; color: #000; }
+.english-text { font-size: 24px; font-weight: 400; color: #fff; margin-bottom: 24px; line-height: 1.2; letter-spacing: 0.02em; }
+.meaning-text { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #aaa; line-height: 1.6; max-width: 300px; }
+.tap-hint { text-align: center; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; font-weight: 400; }
+.navigation { width: 100%; max-width: 380px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px 40px; }
+.nav-btn { background: transparent; border: 1px solid #555; padding: 9px 18px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; font-weight: 400; color: #999; -webkit-appearance: none; appearance: none; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
+.nav-btn:disabled { opacity: 1; cursor: default; color: #444; border-color: #333; }
+.nav-btn:disabled:hover { background: transparent; color: #444; border-color: #333; }
+.progress { font-size: 12px; letter-spacing: 1px; font-weight: 400; color: #999; }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="title">Minimum French, Maximum Wine & Dine</div>
+<div class="tabs">
+<button class="tab-btn active" data-tab="wine">Wine</button>
+<button class="tab-btn" data-tab="dine">Dine</button>
+</div>
+</div>
+
+<div class="container">
+<div class="card-wrapper">
+<div class="card" id="flashcard">
+<div class="card-face card-front">
+<div class="card-content">
+<div class="french-text" id="french-text"></div>
+<button class="audio-btn" id="audio-btn">Listen</button>
+</div>
+<div class="tap-hint">tap to flip</div>
+</div>
+<div class="card-face card-back">
+<div class="card-content">
+<div class="english-text" id="english-text"></div>
+<div class="meaning-text" id="meaning-text"></div>
+</div>
+<div class="tap-hint">tap to flip back</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="navigation">
+<button class="nav-btn" id="prev-btn">&#8592; Prev</button>
+<div class="progress"><span id="current">1</span> / <span id="total">30</span></div>
+<button class="nav-btn" id="next-btn">Next &#8594;</button>
+</div>
+
+<script>
+const wineCards = [
+{ french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
+{ french: "Vin de la maison", english: "House wine", meaning: "Always the right call" },
+{ french: "Un verre de rouge", english: "Glass of red", meaning: "Meat's partner" },
+{ french: "Un verre de blanc", english: "Glass of white", meaning: "Seafood + apéro" },
+{ french: "Un verre de rosé", english: "Glass of rosé", meaning: "Summer essential" },
+{ french: "On prend une bouteille ?", english: "Shall we get a bottle?", meaning: "The upgrade" },
+{ french: "Sec", english: "Dry", meaning: "Safest choice" },
+{ french: "Léger", english: "Light-bodied", meaning: "Easy drinking" },
+{ french: "Corsé", english: "Full-bodied", meaning: "Richer red" },
+{ french: "Fruité", english: "Fruity", meaning: "Soft and easy" },
+{ french: "Frais", english: "Fresh", meaning: "Most useful word" },
+{ french: "Quel vin avec ce plat ?", english: "Which wine with this dish?", meaning: "Smart move" },
+{ french: "C'est quel millésime ?", english: "What's the vintage?", meaning: "Sounds serious" },
+{ french: "Vous conseillez quoi ?", english: "What do you recommend?", meaning: "Best shortcut" },
+{ french: "Vous avez quelque chose de bon, moins cher ?", english: "Something good, less expensive?", meaning: "Smart, not cheap" },
+{ french: "Pour une occasion spéciale", english: "For a special occasion", meaning: "When it matters" },
+{ french: "Il est très bon", english: "It's very good", meaning: "Safe approval" },
+{ french: "J'aime bien celui-là", english: "I like this one", meaning: "Natural reaction" },
+{ french: "Un Bordeaux", english: "Bordeaux", meaning: "Reference red" },
+{ french: "Un Sancerre", english: "Sancerre", meaning: "Bistro white" },
+{ french: "Un Chinon", english: "Chinon", meaning: "Classic red" },
+{ french: "Un Chablis", english: "Chablis", meaning: "Crisp favourite" },
+{ french: "Un Muscadet", english: "Muscadet", meaning: "Seafood go-to" },
+{ french: "Un Bourgogne", english: "Burgundy", meaning: "Elegant default" },
+{ french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" },
+{ french: "Encore un verre ?", english: "Another glass?", meaning: "Always happens" },
+{ french: "On reprend la même chose ?", english: "Same again?", meaning: "Very Paris" },
+{ french: "Une dernière ?", english: "One last one?", meaning: "Never the last" },
+{ french: "On continue ?", english: "Shall we continue?", meaning: "Open-ended" },
+{ french: "C'est parfait comme ça", english: "This is perfect like this", meaning: "Know when to stop" }
+];
+
+const dineCards = [
+{ french: "Bonjour", english: "Hello", meaning: "Always first" },
+{ french: "Bonsoir", english: "Good evening", meaning: "After sunset" },
+{ french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+{ french: "En terrasse ?", english: "Outside?", meaning: "Paris default" },
+{ french: "J'ai une réservation au nom de…", english: "I have a reservation under…", meaning: "Reservation opener" },
+{ french: "On n'est pas pressés", english: "We're not in a hurry", meaning: "Very Paris" },
+{ french: "Le plat du jour", english: "Dish of the day", meaning: "Safe choice" },
+{ french: "Qu'est-ce que vous recommandez ?", english: "What do you recommend?", meaning: "Smart move" },
+{ french: "C'est quoi… ?", english: "What is this?", meaning: "When the menu loses you" },
+{ french: "Je vais prendre…", english: "I'll have…", meaning: "How the order happens" },
+{ french: "Une carafe d'eau", english: "Tap water", meaning: "Always free" },
+{ french: "Vous avez quelque chose sans gluten ?", english: "Do you have anything gluten-free?", meaning: "The modern question" },
+{ french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "French steak default" },
+{ french: "C'est pour partager", english: "It's to share", meaning: "Useful at any table" },
+{ french: "Du pain, s'il vous plaît", english: "More bread, please", meaning: "No extra charge" },
+{ french: "Du sel, s'il vous plaît", english: "Salt, please", meaning: "Fix it" },
+{ french: "On peut avoir un peu plus de temps ?", english: "Can we have a bit more time?", meaning: "Useful pause" },
+{ french: "On prend quoi ?", english: "What are we getting?", meaning: "Group-table essential" },
+{ french: "C'est bon", english: "It's good", meaning: "Polite approval" },
+{ french: "Pas mal", english: "Not bad", meaning: "High praise in Paris" },
+{ french: "C'est parfait", english: "It's perfect", meaning: "Maximum compliment" },
+{ french: "C'était délicieux", english: "That was delicious", meaning: "Stronger praise" },
+{ french: "J'adore", english: "I love it", meaning: "Simple approval" },
+{ french: "On reprend ça ?", english: "Should we get that again?", meaning: "Good sign" },
+{ french: "Un café", english: "Espresso", meaning: "Meal ending" },
+{ french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" },
+{ french: "On partage", english: "We split", meaning: "Clean. Direct" },
+{ french: "Je t'invite", english: "My treat", meaning: "Classic gesture" },
+{ french: "Par carte", english: "By card", meaning: "Modern Paris" },
+{ french: "Bonne soirée", english: "Have a nice evening", meaning: "Elegant exit" }
+];
+
+let currentTab = 'wine';
+let currentCard = 0;
+
+const flashcard = document.getElementById('flashcard');
+const frenchText = document.getElementById('french-text');
+const englishText = document.getElementById('english-text');
+const meaningText = document.getElementById('meaning-text');
+const audioBtn = document.getElementById('audio-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const currentSpan = document.getElementById('current');
+const totalSpan = document.getElementById('total');
+const tabBtns = document.querySelectorAll('.tab-btn');
+
+function getCards() {
+return currentTab === 'wine' ? wineCards : dineCards;
+}
+
+function updateCard() {
+const cards = getCards();
+const card = cards[currentCard];
+frenchText.textContent = card.french;
+englishText.textContent = card.english;
+meaningText.textContent = card.meaning;
+currentSpan.textContent = currentCard + 1;
+totalSpan.textContent = cards.length;
+flashcard.classList.remove('flipped');
+prevBtn.disabled = currentCard === 0;
+nextBtn.disabled = currentCard === cards.length - 1;
+}
+
+function switchTab(tab) {
+currentTab = tab;
+currentCard = 0;
+updateCard();
+tabBtns.forEach(btn => {
+if (btn.dataset.tab === tab) {
+btn.classList.add('active');
+} else {
+btn.classList.remove('active');
+}
+});
+}
+
+tabBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+switchTab(btn.dataset.tab);
+});
+});
+
+flashcard.addEventListener('click', () => flashcard.classList.toggle('flipped'));
+
+audioBtn.addEventListener('click', (e) => {
+e.stopPropagation();
+const cards = getCards();
+const utterance = new SpeechSynthesisUtterance(cards[currentCard].french);
+utterance.lang = 'fr-FR';
+utterance.rate = 0.85;
+const voices = speechSynthesis.getVoices();
+const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+if (frenchVoice) utterance.voice = frenchVoice;
+speechSynthesis.speak(utterance);
+});
+
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+prevBtn.addEventListener('click', () => {
+if (currentCard > 0) {
+currentCard--;
+updateCard();
+}
+});
+
+nextBtn.addEventListener('click', () => {
+const cards = getCards();
+if (currentCard < cards.length - 1) {
+currentCard++;
+updateCard();
+}
+});
+
+updateCard();
+
+</script>
+
+</body>
+</html>
