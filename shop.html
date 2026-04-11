@@ -9,11 +9,15 @@
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .header { padding: 40px 24px 20px; text-align: center; border-bottom: 1px solid #222; }
 .header-title { font-size: 20px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; }
-.product-section { padding: 60px 24px; border-bottom: 1px solid #222; max-width: 900px; margin: 0 auto; }
+.product-section { padding: 60px 24px; border-bottom: 1px solid #222; max-width: 100%; }
+.section-inner { max-width: 600px; margin: 0 auto; }
 .product-title { font-size: 28px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; }
 .product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
-.card-wrapper { width: 100%; max-width: 400px; perspective: 1200px; margin: 0 auto; }
+.tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
+.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
+.card-wrapper { width: 100%; max-width: 450px; perspective: 1200px; }
 .card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
 .card.flipped { transform: rotateY(180deg); }
 .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
@@ -24,19 +28,14 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 .audio-btn:hover { background: #fff; color: #000; }
 .english-text { font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 20px; }
 .meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
-.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #666; }
-.tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
-.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
-.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
-.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; }
+.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #666; text-align: center; }
+.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 450px; }
 .nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; transition: all 0.2s; }
 .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
 .nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
 .progress { font-size: 12px; color: #999; }
-.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; justify-content: center; }
-.btn { padding: 10px 24px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; transition: all 0.2s; }
-.btn-preview { background: transparent; border: 1px solid #fff; color: #fff; }
-.btn-preview:hover { background: #fff; color: #000; }
+.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+.btn { padding: 12px 32px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; transition: all 0.2s; }
 .btn-buy { background: #fff; color: #000; border: 1px solid #fff; font-weight: 500; }
 .btn-buy:hover { opacity: 0.9; }
 .footer { padding: 40px 24px; text-align: center; font-size: 12px; color: #666; letter-spacing: 1px; }
@@ -50,8 +49,9 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <!-- PRODUCT 1: MAXIMUM PARIS (€27) -->
 <div class="product-section">
+<div class="section-inner">
 <div class="product-title">Maximum Paris</div>
-<div class="product-desc">120 interactive French phrases — the complete collection. Four decks: Flirting, Dating, Wine, Dine. Tap to flip. Click listen to hear pronunciation. €27.00</div>
+<div class="product-desc">120 interactive French phrases. Four complete decks: Flirting, Dating, Wine, Dine. Tap to flip. Click to listen.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -86,15 +86,15 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/maximum-paris-preview.html" class="btn btn-preview">→ Try Full Preview</a>
 <a href="https://payhip.com/b/maximum-paris" class="btn btn-buy">Buy Now — €27.00</a>
 </div>
 </div>
 
 <!-- PRODUCT 2: FLIRT & DATE (€16.99) -->
 <div class="product-section">
+<div class="section-inner">
 <div class="product-title">Flirt & Date</div>
-<div class="product-desc">60 interactive French phrases for flirting and dating. Two decks: Flirting + Dating. Tap to flip. Click listen to hear pronunciation. €16.99</div>
+<div class="product-desc">60 phrases for flirting and dating. Two decks with audio pronunciation. Tap to flip and learn.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -127,15 +127,15 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/flirt-and-date-preview.html" class="btn btn-preview">→ Try Full Preview</a>
 <a href="https://payhip.com/b/flirt-and-date" class="btn btn-buy">Buy Now — €16.99</a>
 </div>
 </div>
 
 <!-- PRODUCT 3: WINE & DINE (€16.99) -->
 <div class="product-section">
+<div class="section-inner">
 <div class="product-title">Wine & Dine</div>
-<div class="product-desc">60 interactive French phrases for wine tasting and dining. Two decks: Wine + Dine. Tap to flip. Click listen to hear pronunciation. €16.99</div>
+<div class="product-desc">60 phrases for wine bars and restaurants. Two decks with audio. Master Paris dining.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -168,7 +168,6 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/wine-and-dine-preview.html" class="btn btn-preview">→ Try Full Preview</a>
 <a href="https://payhip.com/b/wine-and-dine" class="btn btn-buy">Buy Now — €16.99</a>
 </div>
 </div>
