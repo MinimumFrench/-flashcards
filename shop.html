@@ -9,12 +9,11 @@
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 .header { padding: 40px 24px 20px; text-align: center; border-bottom: 1px solid #222; }
 .header-title { font-size: 20px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; }
-.product-section { padding: 60px 24px; border-bottom: 1px solid #222; }
+.product-section { padding: 60px 24px; border-bottom: 1px solid #222; max-width: 900px; margin: 0 auto; }
 .product-title { font-size: 28px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; }
-.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; max-width: 600px; line-height: 1.6; }
-.product-content { display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
-.preview-wrapper { flex: 1; min-width: 300px; max-width: 400px; }
-.card-wrapper { width: 100%; max-width: 380px; perspective: 1200px; }
+.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
+.preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
+.card-wrapper { width: 100%; max-width: 400px; perspective: 1200px; }
 .card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
 .card.flipped { transform: rotateY(180deg); }
 .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
@@ -26,20 +25,20 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 .english-text { font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 20px; }
 .meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
 .tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #666; }
-.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; }
+.tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
+.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
+.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 400px; }
+.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; transition: all 0.2s; }
 .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
 .nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
 .progress { font-size: 12px; color: #999; }
-.cta-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn { padding: 12px 32px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.btn { padding: 10px 24px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; transition: all 0.2s; }
 .btn-preview { background: transparent; border: 1px solid #fff; color: #fff; }
 .btn-preview:hover { background: #fff; color: #000; }
 .btn-buy { background: #fff; color: #000; border: 1px solid #fff; font-weight: 500; }
 .btn-buy:hover { opacity: 0.9; }
-.tabs-small { display: flex; gap: 16px; margin-bottom: 20px; }
-.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; }
-.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
 .footer { padding: 40px 24px; text-align: center; font-size: 12px; color: #666; letter-spacing: 1px; }
 </style>
 </head>
@@ -49,16 +48,17 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="header-title">Minimum French Shop</div>
 </div>
 
-<!-- PRODUCT 1: FLIRT & DATE -->
+<!-- PRODUCT 1: MAXIMUM PARIS (€27) -->
 <div class="product-section">
-<div class="product-title">Flirt & Date</div>
-<div class="product-desc">60 interactive French phrases for flirting and dating. Two decks: Flirting + Dating. Tap to flip. Click listen to hear pronunciation. €16.99</div>
+<div class="product-title">Maximum Paris</div>
+<div class="product-desc">120 interactive French phrases — the complete collection. Four decks: Flirting, Dating, Wine, Dine. Tap to flip. Click listen to hear pronunciation. €27.00</div>
 
-<div class="product-content">
-<div class="preview-wrapper">
-<div class="tabs-small">
+<div class="preview-container">
+<div class="tabs-container">
 <button class="tab-btn active" onclick="switchTab1('flirting')">Flirting</button>
 <button class="tab-btn" onclick="switchTab1('dating')">Dating</button>
+<button class="tab-btn" onclick="switchTab1('wine')">Wine</button>
+<button class="tab-btn" onclick="switchTab1('dine')">Dine</button>
 </div>
 <div class="card-wrapper">
 <div class="card" id="card1" onclick="flipCard(this)">
@@ -85,39 +85,35 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 </div>
 
-<div style="display: flex; flex-direction: column; justify-content: space-between;">
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/flirt-and-date-preview.html" class="btn btn-preview">→ Try Full Preview</a>
-<a href="https://payhip.com/b/flirt-and-date" class="btn btn-buy">Buy Now — €16.99</a>
-</div>
-</div>
+<a href="https://minimumfrench.github.io/-flashcards/maximum-paris-preview.html" class="btn btn-preview">→ Try Full Preview</a>
+<a href="https://payhip.com/b/maximum-paris" class="btn btn-buy">Buy Now — €27.00</a>
 </div>
 </div>
 
-<!-- PRODUCT 2: WINE & DINE -->
+<!-- PRODUCT 2: FLIRT & DATE (€16.99) -->
 <div class="product-section">
-<div class="product-title">Wine & Dine</div>
-<div class="product-desc">60 interactive French phrases for wine tasting and dining. Two decks: Wine + Dine. Tap to flip. Click listen to hear pronunciation. €16.99</div>
+<div class="product-title">Flirt & Date</div>
+<div class="product-desc">60 interactive French phrases for flirting and dating. Two decks: Flirting + Dating. Tap to flip. Click listen to hear pronunciation. €16.99</div>
 
-<div class="product-content">
-<div class="preview-wrapper">
-<div class="tabs-small">
-<button class="tab-btn active" onclick="switchTab2('wine')">Wine</button>
-<button class="tab-btn" onclick="switchTab2('dine')">Dine</button>
+<div class="preview-container">
+<div class="tabs-container">
+<button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
+<button class="tab-btn" onclick="switchTab2('dating')">Dating</button>
 </div>
 <div class="card-wrapper">
 <div class="card" id="card2" onclick="flipCard(this)">
 <div class="card-face card-front">
 <div class="card-content">
-<div class="french-text" id="french2">La carte des vins, s'il vous plaît</div>
+<div class="french-text" id="french2">Enchanté</div>
 <button class="audio-btn" onclick="speak(2, event)">Listen</button>
 </div>
 <div class="tap-hint">tap to flip</div>
 </div>
 <div class="card-face card-back">
 <div class="card-content">
-<div class="english-text" id="english2">The wine list, please</div>
-<div class="meaning-text" id="meaning2">Polite opener</div>
+<div class="english-text" id="english2">Nice to meet you</div>
+<div class="meaning-text" id="meaning2">Simple. Smooth. French</div>
 </div>
 <div class="tap-hint">tap to flip back</div>
 </div>
@@ -130,41 +126,35 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 </div>
 
-<div style="display: flex; flex-direction: column; justify-content: space-between;">
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/wine-and-dine-preview.html" class="btn btn-preview">→ Try Full Preview</a>
-<a href="https://payhip.com/b/wine-and-dine" class="btn btn-buy">Buy Now — €16.99</a>
-</div>
-</div>
+<a href="https://minimumfrench.github.io/-flashcards/flirt-and-date-preview.html" class="btn btn-preview">→ Try Full Preview</a>
+<a href="https://payhip.com/b/flirt-and-date" class="btn btn-buy">Buy Now — €16.99</a>
 </div>
 </div>
 
-<!-- PRODUCT 3: MAXIMUM PARIS -->
+<!-- PRODUCT 3: WINE & DINE (€16.99) -->
 <div class="product-section">
-<div class="product-title">Maximum Paris</div>
-<div class="product-desc">120 interactive French phrases — the complete collection. Four decks: Flirting, Dating, Wine, Dine. Tap to flip. Click listen to hear pronunciation. €27.00</div>
+<div class="product-title">Wine & Dine</div>
+<div class="product-desc">60 interactive French phrases for wine tasting and dining. Two decks: Wine + Dine. Tap to flip. Click listen to hear pronunciation. €16.99</div>
 
-<div class="product-content">
-<div class="preview-wrapper">
-<div class="tabs-small">
-<button class="tab-btn active" onclick="switchTab3('flirting')">Flirting</button>
-<button class="tab-btn" onclick="switchTab3('dating')">Dating</button>
-<button class="tab-btn" onclick="switchTab3('wine')">Wine</button>
+<div class="preview-container">
+<div class="tabs-container">
+<button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
 <button class="tab-btn" onclick="switchTab3('dine')">Dine</button>
 </div>
 <div class="card-wrapper">
 <div class="card" id="card3" onclick="flipCard(this)">
 <div class="card-face card-front">
 <div class="card-content">
-<div class="french-text" id="french3">Enchanté</div>
+<div class="french-text" id="french3">La carte des vins, s'il vous plaît</div>
 <button class="audio-btn" onclick="speak(3, event)">Listen</button>
 </div>
 <div class="tap-hint">tap to flip</div>
 </div>
 <div class="card-face card-back">
 <div class="card-content">
-<div class="english-text" id="english3">Nice to meet you</div>
-<div class="meaning-text" id="meaning3">Simple. Smooth. French</div>
+<div class="english-text" id="english3">The wine list, please</div>
+<div class="meaning-text" id="meaning3">Polite opener</div>
 </div>
 <div class="tap-hint">tap to flip back</div>
 </div>
@@ -177,12 +167,9 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 </div>
 
-<div style="display: flex; flex-direction: column; justify-content: space-between;">
 <div class="cta-buttons">
-<a href="https://minimumfrench.github.io/-flashcards/maximum-paris-preview.html" class="btn btn-preview">→ Try Full Preview</a>
-<a href="https://payhip.com/b/maximum-paris" class="btn btn-buy">Buy Now — €27.00</a>
-</div>
-</div>
+<a href="https://minimumfrench.github.io/-flashcards/wine-and-dine-preview.html" class="btn btn-preview">→ Try Full Preview</a>
+<a href="https://payhip.com/b/wine-and-dine" class="btn btn-buy">Buy Now — €16.99</a>
 </div>
 </div>
 
@@ -191,7 +178,6 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <script>
-// PRODUCT 1 DATA
 const flirt1 = [
   { french: "Enchanté", english: "Nice to meet you", meaning: "Simple. Smooth. French" },
   { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
@@ -200,26 +186,24 @@ const dating1 = [
   { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
   { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
 ];
-
-// PRODUCT 2 DATA
-const wine2 = [
+const wine1 = [
   { french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
   { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
 ];
-const dine2 = [
+const dine1 = [
   { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
   { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }
 ];
 
-// PRODUCT 3 DATA
-const flirt3 = [
+const flirt2 = [
   { french: "Enchanté", english: "Nice to meet you", meaning: "Simple. Smooth. French" },
   { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
 ];
-const dating3 = [
+const dating2 = [
   { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
   { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
 ];
+
 const wine3 = [
   { french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
   { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
@@ -230,18 +214,18 @@ const dine3 = [
 ];
 
 let tab1 = 'flirting', card1 = 0;
-let tab2 = 'wine', card2 = 0;
-let tab3 = 'flirting', card3 = 0;
+let tab2 = 'flirting', card2 = 0;
+let tab3 = 'wine', card3 = 0;
 
 function getCards(prod, tab) {
-  if (prod === 1) return tab === 'flirting' ? flirt1 : dating1;
-  if (prod === 2) return tab === 'wine' ? wine2 : dine2;
-  if (prod === 3) {
-    if (tab === 'flirting') return flirt3;
-    if (tab === 'dating') return dating3;
-    if (tab === 'wine') return wine3;
-    if (tab === 'dine') return dine3;
+  if (prod === 1) {
+    if (tab === 'flirting') return flirt1;
+    if (tab === 'dating') return dating1;
+    if (tab === 'wine') return wine1;
+    if (tab === 'dine') return dine1;
   }
+  if (prod === 2) return tab === 'flirting' ? flirt2 : dating2;
+  if (prod === 3) return tab === 'wine' ? wine3 : dine3;
 }
 
 function updateCard(prod) {
