@@ -173,4 +173,115 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <div class="footer">
 <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
-<a h
+<a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+</div>
+
+<script>
+const flirt1 = [
+  { french: "Enchanté", english: "Nice to meet you", meaning: "Simple. Smooth. French" },
+  { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
+];
+const dating1 = [
+  { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+  { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
+];
+const wine1 = [
+  { french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
+  { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
+];
+const dine1 = [
+  { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+  { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }
+];
+
+const flirt2 = [
+  { french: "Je t'ai repéré", english: "I've spotted you", meaning: "Confident opener" },
+  { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
+];
+const dating2 = [
+  { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+  { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
+];
+
+const wine3 = [
+  { french: "La carte des vins, s'il vous plaît", english: "The wine list, please", meaning: "Polite opener" },
+  { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
+];
+const dine3 = [
+  { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+  { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }
+];
+
+let tab1 = 'flirting', card1 = 0;
+let tab2 = 'flirting', card2 = 0;
+let tab3 = 'wine', card3 = 0;
+
+function getCards(prod, tab) {
+  if (prod === 1) {
+    if (tab === 'flirting') return flirt1;
+    if (tab === 'dating') return dating1;
+    if (tab === 'wine') return wine1;
+    if (tab === 'dine') return dine1;
+  }
+  if (prod === 2) return tab === 'flirting' ? flirt2 : dating2;
+  if (prod === 3) return tab === 'wine' ? wine3 : dine3;
+}
+
+function updateCard(prod) {
+  let tab, card, id;
+  if (prod === 1) { tab = tab1; card = card1; id = '1'; }
+  if (prod === 2) { tab = tab2; card = card2; id = '2'; }
+  if (prod === 3) { tab = tab3; card = card3; id = '3'; }
+  
+  const cards = getCards(prod, tab);
+  const c = cards[card];
+  document.getElementById('french' + id).textContent = c.french;
+  document.getElementById('english' + id).textContent = c.english;
+  document.getElementById('meaning' + id).textContent = c.meaning;
+  document.getElementById('current' + id).textContent = card + 1;
+  document.getElementById('total' + id).textContent = cards.length;
+  document.getElementById('card' + id).style.transform = 'rotateY(0deg)';
+  document.getElementById('prev' + id).disabled = card === 0;
+  document.getElementById('next' + id).disabled = card === cards.length - 1;
+}
+
+function flipCard(el) {
+  el.style.transform = el.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+}
+
+function speak(prod, e) {
+  e.stopPropagation();
+  let tab, card;
+  if (prod === 1) { tab = tab1; card = card1; }
+  if (prod === 2) { tab = tab2; card = card2; }
+  if (prod === 3) { tab = tab3; card = card3; }
+  const cards = getCards(prod, tab);
+  const utterance = new SpeechSynthesisUtterance(cards[card].french);
+  utterance.lang = 'fr-FR';
+  utterance.rate = 0.85;
+  const voices = speechSynthesis.getVoices();
+  const v = voices.find(x => x.lang.startsWith('fr') && x.name.toLowerCase().includes('female')) || voices.find(x => x.lang.startsWith('fr'));
+  if (v) utterance.voice = v;
+  speechSynthesis.speak(utterance);
+}
+
+function switchTab1(t) { tab1 = t; card1 = 0; updateCard(1); }
+function switchTab2(t) { tab2 = t; card2 = 0; updateCard(2); }
+function switchTab3(t) { tab3 = t; card3 = 0; updateCard(3); }
+
+function prev1() { if (card1 > 0) { card1--; updateCard(1); } }
+function next1() { const cards = getCards(1, tab1); if (card1 < cards.length - 1) { card1++; updateCard(1); } }
+
+function prev2() { if (card2 > 0) { card2--; updateCard(2); } }
+function next2() { const cards = getCards(2, tab2); if (card2 < cards.length - 1) { card2++; updateCard(2); } }
+
+function prev3() { if (card3 > 0) { card3--; updateCard(3); } }
+function next3() { const cards = getCards(3, tab3); if (card3 < cards.length - 1) { card3++; updateCard(3); } }
+
+updateCard(1);
+updateCard(2);
+updateCard(3);
+</script>
+
+</body>
+</html>
