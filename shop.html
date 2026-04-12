@@ -91,3 +91,208 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="cta-buttons">
 <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
 </div>
+</div>
+
+<div class="product-section">
+<div class="section-inner">
+<div class="product-title">ROMANCE</div>
+<div class="product-desc">The Edge. 60 sharp interfaces. Curated phrases used in real Paris romantic situations. The words that create tension, suggest desire, and take you out of the ordinary. Know your game. Seduce with confidence. Audio included.</div>
+
+<div class="preview-container">
+<div class="tabs-container">
+<button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
+<button class="tab-btn" onclick="switchTab2('dating')">Dating</button>
+</div>
+<div class="card-wrapper">
+<div class="card" id="card2" onclick="flipCard(this)">
+<div class="card-face card-front">
+<div class="card-content">
+<div class="french-text" id="french2">J'aime ton vibe</div>
+<button class="audio-btn" onclick="speak(2, event)">Listen</button>
+</div>
+<div class="tap-hint">tap to flip</div>
+</div>
+<div class="card-face card-back">
+<div class="card-content">
+<div class="english-text" id="english2">I love your vibe</div>
+<div class="meaning-text" id="meaning2">Modern. Confident.</div>
+</div>
+<div class="tap-hint">tap to flip back</div>
+</div>
+</div>
+</div>
+<div class="nav-section">
+<button class="nav-btn" id="prev2" onclick="prev2()">← Prev</button>
+<span class="progress"><span id="current2">1</span> / <span id="total2">30</span></span>
+<button class="nav-btn" id="next2" onclick="next2()">Next →</button>
+</div>
+</div>
+
+<div class="cta-buttons">
+<a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
+</div>
+</div>
+
+<div class="product-section">
+<div class="section-inner">
+<div class="product-title">WINE & DINE</div>
+<div class="product-desc">The Presence. 60 essential interfaces. The essential phrases Parisians actually use at the table. From choosing the wine to the moment. Own the table. Indulge the experience. Audio included.</div>
+
+<div class="preview-container">
+<div class="tabs-container">
+<button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
+<button class="tab-btn" onclick="switchTab3('dine')">Dine</button>
+</div>
+<div class="card-wrapper">
+<div class="card" id="card3" onclick="flipCard(this)">
+<div class="card-face card-front">
+<div class="card-content">
+<div class="french-text" id="french3">Vin de la maison</div>
+<button class="audio-btn" onclick="speak(3, event)">Listen</button>
+</div>
+<div class="tap-hint">tap to flip</div>
+</div>
+<div class="card-face card-back">
+<div class="card-content">
+<div class="english-text" id="english3">House wine</div>
+<div class="meaning-text" id="meaning3">The insider's move</div>
+</div>
+<div class="tap-hint">tap to flip back</div>
+</div>
+</div>
+</div>
+<div class="nav-section">
+<button class="nav-btn" id="prev3" onclick="prev3()">← Prev</button>
+<span class="progress"><span id="current3">1</span> / <span id="total3">30</span></span>
+<button class="nav-btn" id="next3" onclick="next3()">Next →</button>
+</div>
+</div>
+
+<div class="cta-buttons">
+<a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
+</div>
+</div>
+
+<div class="footer">
+<a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
+<a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+</div>
+
+<script>
+const flirt1 = [
+  { french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" },
+  { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
+];
+const dating1 = [
+  { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+  { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
+];
+const wine1 = [
+  { french: "On prend une bottle", english: "Let's get a bottle", meaning: "Commitment move" },
+  { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
+];
+const dine1 = [
+  { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+  { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }
+];
+
+const flirt2 = [
+  { french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." },
+  { french: "Tu es con", english: "You're crazy", meaning: "Playful tension" }
+];
+const dating2 = [
+  { french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" },
+  { french: "Tu fais quoi ce soir", english: "What are you doing tonight?", meaning: "Direct move" }
+];
+
+const wine3 = [
+  { french: "Vin de la maison", english: "House wine", meaning: "The insider's move" },
+  { french: "Sec", english: "Dry", meaning: "Knows what she wants" }
+];
+const dine3 = [
+  { french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" },
+  { french: "C'est bon", english: "It's good", meaning: "The simple compliment" }
+];
+
+let tab1 = 'flirting', card1 = 0;
+let tab2 = 'flirting', card2 = 0;
+let tab3 = 'wine', card3 = 0;
+
+function getCards(prod, tab) {
+  if (prod === 1) {
+    if (tab === 'flirting') return flirt1;
+    if (tab === 'dating') return dating1;
+    if (tab === 'wine') return wine1;
+    if (tab === 'dine') return dine1;
+  }
+  if (prod === 2) return tab === 'flirting' ? flirt2 : dating2;
+  if (prod === 3) return tab === 'wine' ? wine3 : dine3;
+}
+
+function updateCard(prod) {
+  let tab, card, id;
+  if (prod === 1) { tab = tab1; card = card1; id = '1'; }
+  if (prod === 2) { tab = tab2; card = card2; id = '2'; }
+  if (prod === 3) { tab = tab3; card = card3; id = '3'; }
+  
+  const cards = getCards(prod, tab);
+  const c = cards[card];
+  document.getElementById('french' + id).textContent = c.french;
+  document.getElementById('english' + id).textContent = c.english;
+  document.getElementById('meaning' + id).textContent = c.meaning;
+  document.getElementById('current' + id).textContent = card + 1;
+  document.getElementById('total' + id).textContent = cards.length;
+  document.getElementById('card' + id).style.transform = 'rotateY(0deg)';
+  document.getElementById('prev' + id).disabled = card === 0;
+  document.getElementById('next' + id).disabled = card === cards.length - 1;
+}
+
+function flipCard(el) {
+  el.style.transform = el.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
+}
+
+function speak(prod, e) {
+  e.stopPropagation();
+  let tab, card;
+  if (prod === 1) { tab = tab1; card = card1; }
+  if (prod === 2) { tab = tab2; card = card2; }
+  if (prod === 3) { tab = tab3; card = card3; }
+  const cards = getCards(prod, tab);
+  const text = cards[card].french;
+  
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'fr-FR';
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+  
+  const voices = speechSynthesis.getVoices();
+  const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
+  if (frenchVoice) utterance.voice = frenchVoice;
+  
+  speechSynthesis.speak(utterance);
+}
+
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
+function switchTab1(t) { tab1 = t; card1 = 0; updateCard(1); }
+function switchTab2(t) { tab2 = t; card2 = 0; updateCard(2); }
+function switchTab3(t) { tab3 = t; card3 = 0; updateCard(3); }
+
+function prev1() { if (card1 > 0) { card1--; updateCard(1); } }
+function next1() { const cards = getCards(1, tab1); if (card1 < cards.length - 1) { card1++; updateCard(1); } }
+
+function prev2() { if (card2 > 0) { card2--; updateCard(2); } }
+function next2() { const cards = getCards(2, tab2); if (card2 < cards.length - 1) { card2++; updateCard(2); } }
+
+function prev3() { if (card3 > 0) { card3--; updateCard(3); } }
+function next3() { const cards = getCards(3, tab3); if (card3 < cards.length - 1) { card3++; updateCard(3); } }
+
+updateCard(1);
+updateCard(2);
+updateCard(3);
+</script>
+
+</body>
+</html>
