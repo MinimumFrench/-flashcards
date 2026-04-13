@@ -277,10 +277,22 @@ function speak(prod, e) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
   utterance.rate = 0.8;
+  utterance.pitch = 1.05;
   
   const voices = speechSynthesis.getVoices();
-  const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
-  if (frenchVoice) utterance.voice = frenchVoice;
+  let selectedVoice = voices.find(v =>
+    v.lang.startsWith('fr') &&
+    (v.name.includes('Amélie') || v.name.includes('Alice') ||
+     v.name.includes('Margot') || v.name.includes('Sophie') ||
+     v.name.toLowerCase().includes('female') ||
+     v.name.toLowerCase().includes('femme'))
+  );
+  
+  if (!selectedVoice) {
+    selectedVoice = voices.find(v => v.lang.startsWith('fr'));
+  }
+  
+  if (selectedVoice) utterance.voice = selectedVoice;
   
   speechSynthesis.speak(utterance);
 }
