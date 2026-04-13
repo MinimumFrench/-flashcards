@@ -53,8 +53,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <div class="product-section">
 <div class="section-inner">
-<div class="product-title">THE COMPLETE COLLECTION</div>
-<div class="product-desc">The Master Key. Everything you need. 120+ interactive interfaces. Precisely selected must-know phrases Parisians actually use. From first glance to last glass. Every essential line to navigate with natural confidence and effortless presence. Don't just visit. Live it. Audio included.</div>
+<div class="product-title">THE COMPLETE PARIS SET</div>
+<div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -95,8 +95,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <div class="product-section">
 <div class="section-inner">
-<div class="product-title">ROMANCE</div>
-<div class="product-desc">The Edge. 60 sharp interfaces. Curated phrases used in real Paris romantic situations. The words that create tension, suggest desire, and take you out of the ordinary. Know your game. Seduce with confidence. Audio included.</div>
+<div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
+<div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -135,8 +135,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <div class="product-section">
 <div class="section-inner">
-<div class="product-title">WINE & DINE</div>
-<div class="product-desc">The Presence. 60 essential interfaces. The essential phrases Parisians actually use at the table. From choosing the wine to the moment. Own the table. Indulge the experience. Audio included.</div>
+<div class="product-title">INSIDER'S DINE & WINE</div>
+<div class="product-desc">60 Curated Cards with Native Audio. The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
 
 <div class="preview-container">
 <div class="tabs-container">
@@ -170,6 +170,19 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 
 <div class="cta-buttons">
 <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
+</div>
+</div>
+
+<div class="product-section">
+<div class="section-inner">
+<div class="product-title">PARIS DECODED</div>
+<div style="font-size: 13px; letter-spacing: 1px; color: #aaa; margin-bottom: 20px; font-weight: 300; line-height: 1.6;">Private Intelligence Session</div>
+<div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director. Having spent years at the intersection of New York's pace and Parisian tradition, she delivers precise insight into the city's unspoken codes, etiquette, and interior logic.</div>
+<div class="product-desc" style="margin-top: 20px;">90-minute private intelligence session. Available via Video Call or In-Person (Paris). Immediate calendar access. Tailored to your specific social or travel situation.</div>
+<div class="product-desc" style="margin-top: 20px; font-weight: 400;">Paris doesn't reward trying. It rewards restraint.</div>
+<div class="cta-buttons">
+<a href="https://calendly.com/ritasantvalentinas" class="payhip-buy-button" data-theme="none">BOOK THE SESSION — €250.00</a>
+</div>
 </div>
 </div>
 
@@ -263,13 +276,15 @@ function speak(prod, e) {
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
-  utterance.rate = 0.85;
-  utterance.pitch = 1;
+  utterance.rate = 0.8;
+  utterance.pitch = 1.2;
   utterance.volume = 1;
   
   const voices = speechSynthesis.getVoices();
-  const frenchVoice = voices.find(v => v.lang.startsWith('fr') && v.name.toLowerCase().includes('female')) || voices.find(v => v.lang.startsWith('fr'));
-  if (frenchVoice) utterance.voice = frenchVoice;
+  const femaleVoice = voices.find(v => v.name.toLowerCase().includes('female') && (v.lang.includes('fr-FR') || v.lang.includes('fr') || v.lang === 'fr')) 
+    || voices.find(v => (v.lang.includes('fr-FR') || v.lang.includes('fr')) && !v.name.toLowerCase().includes('male'))
+    || voices.find(v => v.lang.includes('fr'));
+  if (femaleVoice) utterance.voice = femaleVoice;
   
   speechSynthesis.speak(utterance);
 }
