@@ -8,225 +8,293 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
 .header { padding: 40px 24px 20px; text-align: center; border-bottom: 1px solid #222; }
 .header-title { font-size: 20px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; }
 .header-subtitle { font-size: 13px; letter-spacing: 1px; color: #aaa; margin-top: 12px; font-weight: 300; line-height: 1.6; }
-.product-section { padding: 60px 24px; border-bottom: 1px solid #222; max-width: 100%; }
+
+.product-section { padding: 60px 24px; border-bottom: 1px solid #222; }
 .section-inner { max-width: 600px; margin: 0 auto; }
-.product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; line-height: 1.4; text-align: center; }
-.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
+
+.product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; text-align: center; }
+.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; text-align: center; }
+
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
 .tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
-.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; }
 .tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
-.card-wrapper { width: 100%; max-width: 450px; perspective: 1200px; }
-.card { width: 100%; height: 550px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+
+.card-wrapper { 
+  width: 100%; 
+  max-width: 420px; 
+  perspective: 1200px; 
+}
+
+.card { 
+  width: 100%; 
+  height: 520px; 
+  position: relative; 
+  transform-style: preserve-3d; 
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); 
+  cursor: pointer; 
+}
 .card.flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
+
+.card-face { 
+  position: absolute; 
+  width: 100%; 
+  height: 100%; 
+  backface-visibility: hidden; 
+  border: 1px solid #333; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  padding: 40px 28px; 
+  background: #000; 
+}
 .card-back { transform: rotateY(180deg); }
-.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 20px; }
-.french-text { font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 24px; }
-.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s; }
+
+.card-content { 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center; 
+}
+
+.french-text, .english-text { 
+  font-size: 22px; 
+  font-weight: 400; 
+  line-height: 1.3; 
+  margin-bottom: 24px; 
+}
+
+.audio-btn { 
+  background: transparent; 
+  color: #fff; 
+  border: 1px solid #fff; 
+  padding: 8px 24px; 
+  font-size: 10px; 
+  letter-spacing: 2px; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+}
 .audio-btn:hover { background: #fff; color: #000; }
-.english-text { font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 20px; }
+
 .meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
-.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; }
-.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 450px; }
-.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; transition: all 0.2s; }
+.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; margin-top: auto; }
+
+.nav-section { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-top: 24px; 
+  width: 100%; 
+  max-width: 420px; 
+}
+.nav-btn { 
+  background: transparent; 
+  border: 1px solid #555; 
+  padding: 8px 16px; 
+  font-size: 10px; 
+  letter-spacing: 2px; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+  color: #999; 
+}
 .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
 .nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
+
 .progress { font-size: 12px; color: #999; }
-.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
-.payhip-buy-button { background: #fff !important; color: #000 !important; border: 1px solid #fff !important; padding: 12px 32px !important; font-size: 11px !important; letter-spacing: 2px !important; text-transform: uppercase !important; font-weight: 500 !important; display: inline-block !important; text-decoration: none !important; cursor: pointer !important; transition: opacity 0.2s !important; font-family: inherit !important; }
-.payhip-buy-button:hover { opacity: 0.9 !important; }
+
+.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+
+.payhip-buy-button { 
+  background: #fff !important; 
+  color: #000 !important; 
+  border: 1px solid #fff !important; 
+  padding: 12px 32px !important; 
+  font-size: 11px !important; 
+  letter-spacing: 2px !important; 
+  text-transform: uppercase !important; 
+  font-weight: 500 !important; 
+}
+
 .footer { padding: 40px 24px; text-align: center; }
-.footer a { font-size: 16px; color: #fff; margin: 0 24px; transition: color 0.2s; text-decoration: none; display: inline-block; letter-spacing: 1px; }
+.footer a { font-size: 16px; color: #fff; margin: 0 24px; text-decoration: none; }
 .footer a:hover { color: #aaa; }
 </style>
 </head>
 <body>
 
 <div class="header">
-<div class="header-title">Minimum French Maximum Parisian</div>
-<div class="header-subtitle">Paris, decoded. Know what to say — without second guessing yourself.</div>
+  <div class="header-title">Minimum French Maximum Parisian</div>
+  <div class="header-subtitle">Paris, decoded. Know what to say — without second guessing yourself.</div>
 </div>
 
+<!-- COMPLETE PARIS SET -->
 <div class="product-section">
-<div class="section-inner">
-<div class="product-title">THE COMPLETE PARIS SET</div>
-<div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
+  <div class="section-inner">
+    <div class="product-title">THE COMPLETE PARIS SET</div>
+    <div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
+    
+    <div class="preview-container">
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab1('flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab1('dating')">Dating</button>
+        <button class="tab-btn" onclick="switchTab1('wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab1('dine')">Dine</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card1" onclick="flipCard(this)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french1">T'as un truc en plus</div>
+              <button class="audio-btn" onclick="speak(1, event)">Listen</button>
+            </div>
+            <div class="tap-hint">TAP TO FLIP</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english1">You have something extra</div>
+              <div class="meaning-text" id="meaning1">The compliment that lands</div>
+            </div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev1" onclick="prev1()">← Prev</button>
+        <span class="progress"><span id="current1">1</span> / <span id="total1">30</span></span>
+        <button class="nav-btn" id="next1" onclick="next1()">Next →</button>
+      </div>
+    </div>
 
-<div class="preview-container">
-<div class="tabs-container">
-<button class="tab-btn active" onclick="switchTab1('flirting')">Flirting</button>
-<button class="tab-btn" onclick="switchTab1('dating')">Dating</button>
-<button class="tab-btn" onclick="switchTab1('wine')">Wine</button>
-<button class="tab-btn" onclick="switchTab1('dine')">Dine</button>
-</div>
-<div class="card-wrapper">
-<div class="card" id="card1" onclick="flipCard(this)">
-<div class="card-face card-front">
-<div class="card-content">
-<div class="french-text" id="french1">T'as un truc en plus</div>
-<button class="audio-btn" onclick="speak(1, event)">Listen</button>
-</div>
-<div class="tap-hint">tap to flip</div>
-</div>
-<div class="card-face card-back">
-<div class="card-content">
-<div class="english-text" id="english1">You have something extra</div>
-<div class="meaning-text" id="meaning1">The compliment that lands</div>
-</div>
-<div class="tap-hint">tap to flip back</div>
-</div>
-</div>
-</div>
-<div class="nav-section">
-<button class="nav-btn" id="prev1" onclick="prev1()">← Prev</button>
-<span class="progress"><span id="current1">1</span> / <span id="total1">30</span></span>
-<button class="nav-btn" id="next1" onclick="next1()">Next →</button>
-</div>
+    <div class="cta-buttons">
+      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
+    </div>
+  </div>
 </div>
 
-<div class="cta-buttons">
-<a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
-</div>
-</div>
-
+<!-- THE UNSPOKEN CODE: ROMANCE -->
 <div class="product-section">
-<div class="section-inner">
-<div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
-<div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
+  <div class="section-inner">
+    <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
+    <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
+    
+    <div class="preview-container">
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab2('dating')">Dating</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card2" onclick="flipCard(this)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french2">J'aime ton vibe</div>
+              <button class="audio-btn" onclick="speak(2, event)">Listen</button>
+            </div>
+            <div class="tap-hint">TAP TO FLIP</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english2">I love your vibe</div>
+              <div class="meaning-text" id="meaning2">Modern. Confident.</div>
+            </div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev2" onclick="prev2()">← Prev</button>
+        <span class="progress"><span id="current2">1</span> / <span id="total2">30</span></span>
+        <button class="nav-btn" id="next2" onclick="next2()">Next →</button>
+      </div>
+    </div>
 
-<div class="preview-container">
-<div class="tabs-container">
-<button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
-<button class="tab-btn" onclick="switchTab2('dating')">Dating</button>
-</div>
-<div class="card-wrapper">
-<div class="card" id="card2" onclick="flipCard(this)">
-<div class="card-face card-front">
-<div class="card-content">
-<div class="french-text" id="french2">J'aime ton vibe</div>
-<button class="audio-btn" onclick="speak(2, event)">Listen</button>
-</div>
-<div class="tap-hint">tap to flip</div>
-</div>
-<div class="card-face card-back">
-<div class="card-content">
-<div class="english-text" id="english2">I love your vibe</div>
-<div class="meaning-text" id="meaning2">Modern. Confident.</div>
-</div>
-<div class="tap-hint">tap to flip back</div>
-</div>
-</div>
-</div>
-<div class="nav-section">
-<button class="nav-btn" id="prev2" onclick="prev2()">← Prev</button>
-<span class="progress"><span id="current2">1</span> / <span id="total2">30</span></span>
-<button class="nav-btn" id="next2" onclick="next2()">Next →</button>
-</div>
+    <div class="cta-buttons">
+      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
+    </div>
+  </div>
 </div>
 
-<div class="cta-buttons">
-<a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
-</div>
-</div>
-
+<!-- INSIDER'S DINE & WINE -->
 <div class="product-section">
-<div class="section-inner">
-<div class="product-title">INSIDER'S DINE & WINE</div>
-<div class="product-desc">60 Curated Cards with Native Audio. The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
+  <div class="section-inner">
+    <div class="product-title">INSIDER'S DINE & WINE</div>
+    <div class="product-desc">60 Curated Cards with Native Audio. The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
+    
+    <div class="preview-container">
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab3('dine')">Dine</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card3" onclick="flipCard(this)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french3">Vin de la maison</div>
+              <button class="audio-btn" onclick="speak(3, event)">Listen</button>
+            </div>
+            <div class="tap-hint">TAP TO FLIP</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english3">House wine</div>
+              <div class="meaning-text" id="meaning3">The insider's move</div>
+            </div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev3" onclick="prev3()">← Prev</button>
+        <span class="progress"><span id="current3">1</span> / <span id="total3">30</span></span>
+        <button class="nav-btn" id="next3" onclick="next3()">Next →</button>
+      </div>
+    </div>
 
-<div class="preview-container">
-<div class="tabs-container">
-<button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
-<button class="tab-btn" onclick="switchTab3('dine')">Dine</button>
-</div>
-<div class="card-wrapper">
-<div class="card" id="card3" onclick="flipCard(this)">
-<div class="card-face card-front">
-<div class="card-content">
-<div class="french-text" id="french3">Vin de la maison</div>
-<button class="audio-btn" onclick="speak(3, event)">Listen</button>
-</div>
-<div class="tap-hint">tap to flip</div>
-</div>
-<div class="card-face card-back">
-<div class="card-content">
-<div class="english-text" id="english3">House wine</div>
-<div class="meaning-text" id="meaning3">The insider's move</div>
-</div>
-<div class="tap-hint">tap to flip back</div>
-</div>
-</div>
-</div>
-<div class="nav-section">
-<button class="nav-btn" id="prev3" onclick="prev3()">← Prev</button>
-<span class="progress"><span id="current3">1</span> / <span id="total3">30</span></span>
-<button class="nav-btn" id="next3" onclick="next3()">Next →</button>
-</div>
+    <div class="cta-buttons">
+      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
+    </div>
+  </div>
 </div>
 
-<div class="cta-buttons">
-<a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
-</div>
-</div>
-
+<!-- PARIS DECODED -->
 <div class="product-section">
-<div class="section-inner">
-<div class="product-title">PARIS DECODED</div>
-<div style="font-size: 13px; letter-spacing: 1px; color: #aaa; margin-bottom: 20px; font-weight: 300; line-height: 1.6;">Private Intelligence Session</div>
-<div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director. Having spent years at the intersection of New York's pace and Parisian tradition, she delivers precise insight into the city's unspoken codes, etiquette, and interior logic.</div>
-<div class="product-desc" style="margin-top: 20px;">90-minute private intelligence session. Available via Video Call or In-Person (Paris). Immediate calendar access. Tailored to your specific social or travel situation.</div>
-<div class="product-desc" style="margin-top: 20px; font-weight: 400;">Paris doesn't reward trying. It rewards restraint.</div>
-<div class="cta-buttons">
-<a href="https://calendly.com/ritasantvalentinas" class="payhip-buy-button" data-theme="none">BOOK THE SESSION — €250.00</a>
-</div>
-</div>
+  <div class="section-inner">
+    <div class="product-title">PARIS DECODED</div>
+    <div style="font-size:13px; letter-spacing:1px; color:#aaa; margin-bottom:20px; text-align:center;">Private Intelligence Session</div>
+    <div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director. Having spent years at the intersection of New York's pace and Parisian tradition, she delivers precise insight into the city's unspoken codes, etiquette, and interior logic.</div>
+    <div class="product-desc" style="margin-top:20px;">90-minute private intelligence session.<br>Available via Video Call or In-Person (Paris).<br>Immediate calendar access.<br>Tailored to your specific social or travel situation.</div>
+    <div class="product-desc" style="margin-top:20px; font-weight:400;">Paris doesn't reward trying. It rewards restraint.</div>
+
+    <div class="cta-buttons">
+      <a href="https://calendly.com/ritasantvalentinas" class="payhip-buy-button" data-theme="none">BOOK THE SESSION — €250.00</a>
+    </div>
+  </div>
 </div>
 
 <div class="footer">
-<a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
-<a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
+  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
 </div>
 
 <script>
-const flirt1 = [
-  { french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" },
-  { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
-];
-const dating1 = [
-  { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
-  { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }
-];
-const wine1 = [
-  { french: "On prend une bottle", english: "Let's get a bottle", meaning: "Commitment move" },
-  { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }
-];
-const dine1 = [
-  { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
-  { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }
-];
+// ==================== CARD DATA ====================
+const flirt1 = [{ french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" }];
+const dating1 = [{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" }];
+const wine1 = [{ french: "On prend une bottle", english: "Let's get a bottle", meaning: "Commitment move" }];
+const dine1 = [{ french: "Une table pour deux", english: "Table for two", meaning: "Entry line" }];
 
-const flirt2 = [
-  { french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." },
-  { french: "Tu es con", english: "You're crazy", meaning: "Playful tension" }
-];
-const dating2 = [
-  { french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" },
-  { french: "Tu fais quoi ce soir", english: "What are you doing tonight?", meaning: "Direct move" }
-];
+const flirt2 = [{ french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." }];
+const dating2 = [{ french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" }];
 
-const wine3 = [
-  { french: "Vin de la maison", english: "House wine", meaning: "The insider's move" },
-  { french: "Sec", english: "Dry", meaning: "Knows what she wants" }
-];
-const dine3 = [
-  { french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" },
-  { french: "C'est bon", english: "It's good", meaning: "The simple compliment" }
-];
+const wine3 = [{ french: "Vin de la maison", english: "House wine", meaning: "The insider's move" }];
+const dine3 = [{ french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" }];
 
+// ==================== VARIABLES & FUNCTIONS ====================
 let tab1 = 'flirting', card1 = 0;
 let tab2 = 'flirting', card2 = 0;
 let tab3 = 'wine', card3 = 0;
@@ -247,17 +315,16 @@ function updateCard(prod) {
   if (prod === 1) { tab = tab1; card = card1; id = '1'; }
   if (prod === 2) { tab = tab2; card = card2; id = '2'; }
   if (prod === 3) { tab = tab3; card = card3; id = '3'; }
-  
+
   const cards = getCards(prod, tab);
   const c = cards[card];
+
   document.getElementById('french' + id).textContent = c.french;
   document.getElementById('english' + id).textContent = c.english;
   document.getElementById('meaning' + id).textContent = c.meaning;
   document.getElementById('current' + id).textContent = card + 1;
   document.getElementById('total' + id).textContent = cards.length;
   document.getElementById('card' + id).style.transform = 'rotateY(0deg)';
-  document.getElementById('prev' + id).disabled = card === 0;
-  document.getElementById('next' + id).disabled = card === cards.length - 1;
 }
 
 function flipCard(el) {
@@ -270,51 +337,43 @@ function speak(prod, e) {
   if (prod === 1) { tab = tab1; card = card1; }
   if (prod === 2) { tab = tab2; card = card2; }
   if (prod === 3) { tab = tab3; card = card3; }
+
   const cards = getCards(prod, tab);
   const text = cards[card].french;
-  
+
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
   utterance.rate = 0.88;
-  utterance.pitch = 1.05;
-  
+  utterance.pitch = 1.08;
+
   const voices = speechSynthesis.getVoices();
-  let selectedVoice = voices.find(v =>
-    v.lang.startsWith('fr') &&
-    (v.name.includes('Amélie') || v.name.includes('Alice') ||
-     v.name.includes('Margot') || v.name.includes('Sophie') ||
-     v.name.includes('Camille') || v.name.toLowerCase().includes('female'))
-  );
-  
-  if (!selectedVoice) {
-    selectedVoice = voices.find(v => v.lang.startsWith('fr'));
-  }
-  
+  let selectedVoice = voices.find(v => v.lang.startsWith('fr') && 
+    (v.name.includes('Amélie') || v.name.includes('Alice') || v.name.includes('Margot') || 
+     v.name.includes('Sophie') || v.name.includes('Camille') || v.name.toLowerCase().includes('female')));
+
+  if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith('fr'));
   if (selectedVoice) utterance.voice = selectedVoice;
-  
+
   speechSynthesis.speak(utterance);
 }
 
 if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 
+// Tab & navigation functions
 function switchTab1(t) { tab1 = t; card1 = 0; updateCard(1); }
 function switchTab2(t) { tab2 = t; card2 = 0; updateCard(2); }
 function switchTab3(t) { tab3 = t; card3 = 0; updateCard(3); }
-
 function prev1() { if (card1 > 0) { card1--; updateCard(1); } }
-function next1() { const cards = getCards(1, tab1); if (card1 < cards.length - 1) { card1++; updateCard(1); } }
-
+function next1() { if (card1 < getCards(1, tab1).length - 1) { card1++; updateCard(1); } }
 function prev2() { if (card2 > 0) { card2--; updateCard(2); } }
-function next2() { const cards = getCards(2, tab2); if (card2 < cards.length - 1) { card2++; updateCard(2); } }
-
+function next2() { if (card2 < getCards(2, tab2).length - 1) { card2++; updateCard(2); } }
 function prev3() { if (card3 > 0) { card3--; updateCard(3); } }
-function next3() { const cards = getCards(3, tab3); if (card3 < cards.length - 1) { card3++; updateCard(3); } }
+function next3() { if (card3 < getCards(3, tab3).length - 1) { card3++; updateCard(3); } }
 
 updateCard(1);
 updateCard(2);
 updateCard(3);
 </script>
-
 </body>
 </html>
