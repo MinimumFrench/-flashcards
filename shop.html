@@ -17,24 +17,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 .section-inner { max-width: 600px; margin: 0 auto; }
 
 .product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 400; text-align: center; }
-
-/* Highlighted price line - exactly like your screenshot */
-.product-info { 
-  font-size: 15px; 
-  color: #ccc; 
-  text-align: center; 
-  margin-bottom: 30px; 
-  line-height: 1.5; 
-  font-weight: 400; 
-}
-
-.product-desc { 
-  font-size: 14px; 
-  color: #aaa; 
-  margin-bottom: 40px; 
-  line-height: 1.6; 
-  text-align: center; 
-}
+.product-info { font-size: 15px; color: #ccc; text-align: center; margin-bottom: 30px; line-height: 1.5; font-weight: 400; }
+.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; text-align: center; }
 
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
 .tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
@@ -64,7 +48,26 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 .progress { font-size: 12px; color: #999; }
 
 .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
-.payhip-buy-button { background: #fff !important; color: #000 !important; border: 1px solid #fff !important; padding: 12px 32px !important; font-size: 11px !important; letter-spacing: 2px !important; text-transform: uppercase !important; font-weight: 500 !important; }
+.payhip-buy-button { 
+  background: #fff !important; 
+  color: #000 !important; 
+  border: 1px solid #fff !important; 
+  padding: 12px 32px !important; 
+  font-size: 11px !important; 
+  letter-spacing: 2px !important; 
+  text-transform: uppercase !important; 
+  font-weight: 500 !important; 
+}
+
+.footer { 
+  padding: 50px 24px 40px; 
+  text-align: center; 
+  display: flex; 
+  justify-content: center; 
+  gap: 40px; 
+}
+.footer a { color: #fff; }
+.footer a:hover { color: #aaa; }
 </style>
 </head>
 <body>
@@ -114,7 +117,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     </div>
 
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
+      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now</a>
     </div>
   </div>
 </div>
@@ -122,7 +125,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <!-- THE UNSPOKEN CODE: ROMANCE -->
 <div class="product-section">
   <div class="section-inner">
-    <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
+    <div class="product-title">THE UNSPOKEN CODE ROMANCE</div>
     <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
     <div class="product-desc">Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
     
@@ -157,7 +160,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     </div>
 
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
+      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now</a>
     </div>
   </div>
 </div>
@@ -200,7 +203,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     </div>
 
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
+      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now</a>
     </div>
   </div>
 </div>
@@ -215,17 +218,23 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-desc" style="margin-top:20px; font-weight:400;">Paris doesn't reward trying. It rewards restraint.</div>
 
     <div class="cta-buttons">
-      <a href="https://calendly.com/ritasantvalentinas" class="payhip-buy-button" data-theme="none">BOOK THE SESSION — €250.00</a>
+      <a href="https://calendly.com/ritasantvalentinas" class="payhip-buy-button" data-theme="none">BOOK THE SESSION</a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
-  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank" aria-label="LinkedIn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v9.37h2.79v-5.18c0-.8.6-1.45 1.34-1.45.74 0 1.34.65 1.34 1.45v5.18h2.79zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.68-1.68-1.68-.93 0-1.68.75-1.68 1.68 0 .93.75 1.68 1.68 1.68zM8.27 19.5V9.13H5.5v10.37h2.77z"/></svg>
+  </a>
+  
+  <a href="https://instagram.com/ritadefab" target="_blank" aria-label="Instagram">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.645.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.33.56 2.465.292 6.813.23 8.1.23 15.9.292 17.187c.268 4.348 2.403 6.483 6.761 6.74 1.28.058 1.688.072 4.947.072 3.259 0 3.668-.014 4.947-.072 4.358-.257 6.493-2.392 6.761-6.74.058-1.287.058-9.087 0-10.374-.268-4.348-2.403-6.483-6.761-6.74C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+  </a>
 </div>
 
 <script>
+/* Full script with 2 cards per tab - same as before */
 const flirt1 = [
   { french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" },
   { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }
