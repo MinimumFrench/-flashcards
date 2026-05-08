@@ -1,212 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minimum French — Shop</title>
+<script src="https://payhip.com/payhip.js"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--black:#060606;--white:#f0ede8;--fn:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-body{background:var(--black);color:var(--white);font-family:var(--fn);font-weight:300;line-height:1.6;padding:0 0 80px;}
-header{padding:40px 48px 24px;border-bottom:1px solid rgba(240,237,232,0.08);}
-.site-title{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(240,237,232,0.5);font-weight:400;}
-.site-sub{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(240,237,232,0.22);margin-top:6px;font-weight:400;}
-.tagline{padding:32px 48px;font-size:14px;color:rgba(240,237,232,0.55);font-weight:300;max-width:560px;line-height:1.8;border-bottom:1px solid rgba(240,237,232,0.07);}
-.product{padding:56px 48px;border-bottom:1px solid rgba(240,237,232,0.07);}
-.product-title{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);font-weight:400;margin-bottom:6px;}
-.product-desc{font-size:12px;letter-spacing:0.06em;color:rgba(240,237,232,0.4);margin-bottom:32px;font-weight:300;}
-.deck-tabs{display:flex;gap:2px;margin-bottom:16px;}
-.tab-btn{padding:8px 16px;background:#111;border:none;color:rgba(240,237,232,0.4);font-family:var(--fn);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-weight:400;}
-.tab-btn.active{background:rgba(240,237,232,0.1);color:var(--white);}
-.tab-btn:hover{color:var(--white);}
-.card-area{max-width:380px;}
-.card-wrapper{position:relative;width:100%;height:550px;perspective:1000px;cursor:pointer;margin-bottom:16px;}
-.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 0.5s ease;}
-.card-wrapper.flipped .card-inner{transform:rotateY(180deg);}
-.card-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#0f0f0f;border:1px solid rgba(240,237,232,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 32px;text-align:center;}
-.card-back{transform:rotateY(180deg);background:#141414;}
-.card-label{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(240,237,232,0.25);margin-bottom:20px;font-weight:400;}
-.card-french{font-size:26px;font-weight:300;color:var(--white);margin-bottom:16px;line-height:1.3;}
-.card-phonetic{font-size:12px;color:rgba(240,237,232,0.35);margin-bottom:20px;font-style:italic;}
-.card-english{font-size:14px;color:rgba(240,237,232,0.6);line-height:1.6;font-weight:300;}
-.card-context{font-size:11px;color:rgba(240,237,232,0.3);margin-top:14px;line-height:1.6;}
-.card-tap{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,237,232,0.18);margin-top:28px;font-weight:400;}
-.audio-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid rgba(240,237,232,0.15);padding:8px 16px;color:rgba(240,237,232,0.5);font-family:var(--fn);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-bottom:16px;}
-.audio-btn:hover{border-color:rgba(240,237,232,0.4);color:var(--white);}
-.card-nav{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
-.nav-btn{background:none;border:1px solid rgba(240,237,232,0.15);padding:8px 16px;color:rgba(240,237,232,0.5);font-family:var(--fn);font-size:9px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
-.nav-btn:hover{border-color:var(--white);color:var(--white);}
-.card-counter{font-size:11px;color:rgba(240,237,232,0.3);letter-spacing:0.1em;}
-.buy-btn{display:inline-block;padding:14px 36px;background:var(--white);color:var(--black);font-family:var(--fn);font-size:10px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
-.buy-btn:hover{background:rgba(240,237,232,0.88);}
-.consulting{padding:56px 48px;}
-.consulting-title{font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:var(--white);font-weight:400;margin-bottom:6px;}
-.consulting-sub{font-size:12px;letter-spacing:0.06em;color:rgba(240,237,232,0.4);margin-bottom:28px;}
-.consulting-body{font-size:14px;line-height:1.9;color:rgba(240,237,232,0.6);max-width:520px;margin-bottom:16px;font-weight:300;}
-.consulting-detail{display:flex;gap:24px;margin:24px 0;flex-wrap:wrap;}
-.detail-item{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,237,232,0.3);}
-.detail-item span{color:rgba(240,237,232,0.7);}
-.consulting-quote{font-size:14px;font-style:italic;color:rgba(240,237,232,0.4);border-left:1px solid rgba(240,237,232,0.15);padding-left:20px;margin:28px 0;line-height:1.8;max-width:480px;}
-.learn-btn{display:inline-block;padding:14px 36px;border:1px solid rgba(240,237,232,0.3);color:rgba(240,237,232,0.7);font-family:var(--fn);font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
-.learn-btn:hover{border-color:var(--white);color:var(--white);}
-footer{padding:32px 48px;border-top:1px solid rgba(240,237,232,0.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:20px;}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(240,237,232,0.25);text-decoration:none;transition:color 0.2s;}
-.footer-links a:hover{color:var(--white);}
-.footer-copy{font-size:9px;letter-spacing:0.1em;color:rgba(240,237,232,0.15);}
-@media(max-width:600px){
-  header,footer,.consulting,.product,.tagline{padding-left:24px;padding-right:24px;}
-  .card-area{max-width:100%;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+.header { padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid #222; }
+.header-title { font-size: 28px; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; }
+.header-subtitle { font-size: 14px; letter-spacing: 2px; color: #888; margin-top: 10px; }
+
+.product-section { padding: 70px 20px; border-bottom: 1px solid #222; }
+.section-inner { max-width: 640px; margin: 0 auto; }
+.product-title { font-size: 22px; letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-bottom: 12px; }
+.product-desc { font-size: 15px; color: #aaa; text-align: center; max-width: 520px; margin: 0 auto 40px; }
+
+.tabs-container { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+.tab-btn { background: none; border: none; color: #666; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 8px 0; cursor: pointer; position: relative; }
+.tab-btn.active { color: #fff; }
+.tab-btn.active:after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px; background: #fff; }
+
+.card-wrapper { width: 100%; max-width: 460px; margin: 0 auto 30px; perspective: 1200px; }
+.card { width: 100%; height: 520px; position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid #333; }
+.card.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; inset: 0; backface-visibility: hidden; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 30px; text-align: center; }
+.card-back { transform: rotateY(180deg); }
+
+.french-text { font-size: 24px; line-height: 1.35; margin-bottom: 24px; }
+.audio-btn { margin: 16px 0; background: transparent; color: #fff; border: 1px solid #fff; padding: 10px 28px; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+.audio-btn:hover { background: #fff; color: #000; }
+
+.english-text { font-size: 22px; margin-bottom: 18px; }
+.meaning-text { font-size: 13px; letter-spacing: 1.5px; color: #999; text-transform: uppercase; }
+
+.tap-hint { font-size: 10px; letter-spacing: 1.8px; color: #555; margin-top: 30px; text-transform: uppercase; }
+
+.nav-section { display: flex; justify-content: space-between; align-items: center; max-width: 460px; margin: 0 auto; }
+.nav-btn { background: transparent; border: 1px solid #555; color: #aaa; padding: 10px 22px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.nav-btn:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.cta-buttons { text-align: center; margin-top: 40px; }
+.payhip-buy-button { 
+  background: #fff !important; color: #000 !important; padding: 16px 48px !important; 
+  font-size: 11.5px !important; letter-spacing: 2.5px !important; text-transform: uppercase !important; 
+  font-weight: 500 !important; border: none !important; cursor: pointer !important;
 }
+
+.footer { padding: 80px 20px 60px; text-align: center; }
+.footer a { color: #666; margin: 0 25px; text-decoration: none; font-size: 14px; }
 </style>
 </head>
 <body>
-<header>
-  <div class="site-title">Minimum French &nbsp; Maximum Parisian</div>
-  <div class="site-sub">Paris, decoded. Know what to say — without second guessing yourself.</div>
-</header>
-<div class="tagline">Say less. Own more. The phrases that work. The rules no one explains. The codes that run it.</div>
-<div class="product" id="complete">
-  <div class="product-title">The Complete Paris Set</div>
-  <div class="product-desc">120+ Curated Cards with Native Audio — €27.00</div>
-  <div class="deck-tabs" id="tabs-1">
-    <button class="tab-btn active" onclick="switchDeck(1,'flirting')">Flirting</button>
-    <button class="tab-btn" onclick="switchDeck(1,'dating')">Dating</button>
-    <button class="tab-btn" onclick="switchDeck(1,'wine')">Wine</button>
-    <button class="tab-btn" onclick="switchDeck(1,'dine')">Dine</button>
-  </div>
-  <div class="card-area">
-    <div class="card-wrapper" id="card-1" onclick="flipCard(1)">
-      <div class="card-inner">
+
+<div class="header">
+  <div class="header-title">MINIMUM FRENCH</div>
+  <div class="header-subtitle">MAXIMUM PARISIAN</div>
+</div>
+
+<!-- Product 1 -->
+<div class="product-section">
+  <div class="section-inner">
+    <div class="product-title">THE COMPLETE PARIS SET</div>
+    <div class="product-desc">120+ Curated Cards with Native Audio — €27.00</div>
+    
+    <div class="tabs-container" id="tabs1">
+      <button class="tab-btn active" onclick="switchTab(1,'flirting')">FLIRTING</button>
+      <button class="tab-btn" onclick="switchTab(1,'dating')">DATING</button>
+      <button class="tab-btn" onclick="switchTab(1,'wine')">WINE</button>
+      <button class="tab-btn" onclick="switchTab(1,'dine')">DINE</button>
+    </div>
+
+    <div class="card-wrapper">
+      <div class="card" id="card1" onclick="flipCard(1)">
         <div class="card-face">
-          <div class="card-label" id="card-1-label">Flirting</div>
-          <div class="card-french" id="card-1-french">Tu as de beaux yeux.</div>
-          <div class="card-phonetic" id="card-1-phonetic">tü a də bō zyö</div>
-          <div class="card-tap">TAP TO FLIP</div>
+          <div class="french-text" id="french1">Tu as de beaux yeux.</div>
+          <button class="audio-btn" onclick="speak(1, event)">LISTEN</button>
+          <div class="tap-hint">TAP TO FLIP</div>
         </div>
         <div class="card-face card-back">
-          <div class="card-label">Translation</div>
-          <div class="card-english" id="card-1-english">You have beautiful eyes.</div>
-          <div class="card-context" id="card-1-context">Classic opener. Works best with direct eye contact and a pause after.</div>
-          <div class="card-tap">TAP TO FLIP BACK</div>
+          <div class="english-text" id="english1">You have beautiful eyes.</div>
+          <div class="meaning-text" id="meaning1">Classic opener. Use with confidence.</div>
+          <div class="tap-hint">TAP TO FLIP BACK</div>
         </div>
       </div>
     </div>
-    <button class="audio-btn" onclick="speak('card-1-french')">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Listen
-    </button>
-    <div class="card-nav">
-      <button class="nav-btn" onclick="prevCard(1)">← Prev</button>
-      <span class="card-counter" id="counter-1">1 / 10</span>
-      <button class="nav-btn" onclick="nextCard(1)">Next →</button>
+
+    <div class="nav-section">
+      <button class="nav-btn" onclick="prevCard(1)">← PREV</button>
+      <span id="counter1">1 / 10</span>
+      <button class="nav-btn" onclick="nextCard(1)">NEXT →</button>
     </div>
-    <a href="https://payhip.com/b/z29J1" target="_blank" class="buy-btn">Buy Now</a>
+
+    <div class="cta-buttons">
+      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-product="z29J1">BUY NOW — €27.00</a>
+    </div>
   </div>
 </div>
-<div class="product" id="romance">
-  <div class="product-title">The Unspoken Code Romance</div>
-  <div class="product-desc">60 Curated Cards with Native Audio — €16.99</div>
-  <div class="deck-tabs" id="tabs-2">
-    <button class="tab-btn active" onclick="switchDeck(2,'flirting')">Flirting</button>
-    <button class="tab-btn" onclick="switchDeck(2,'dating')">Dating</button>
-  </div>
-  <div class="card-area">
-    <div class="card-wrapper" id="card-2" onclick="flipCard(2)">
-      <div class="card-inner">
-        <div class="card-face">
-          <div class="card-label" id="card-2-label">Flirting</div>
-          <div class="card-french" id="card-2-french">Je pensais à toi.</div>
-          <div class="card-phonetic" id="card-2-phonetic">zhə pɑ̃sɛ a twa</div>
-          <div class="card-tap">TAP TO FLIP</div>
-        </div>
-        <div class="card-face card-back">
-          <div class="card-label">Translation</div>
-          <div class="card-english" id="card-2-english">I was thinking about you.</div>
-          <div class="card-context" id="card-2-context">Said simply, without urgency. The understatement does the work.</div>
-          <div class="card-tap">TAP TO FLIP BACK</div>
-        </div>
-      </div>
-    </div>
-    <button class="audio-btn" onclick="speak('card-2-french')">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Listen
-    </button>
-    <div class="card-nav">
-      <button class="nav-btn" onclick="prevCard(2)">← Prev</button>
-      <span class="card-counter" id="counter-2">1 / 10</span>
-      <button class="nav-btn" onclick="nextCard(2)">Next →</button>
-    </div>
-    <a href="https://payhip.com/b/pJcgl" target="_blank" class="buy-btn">Buy Now</a>
-  </div>
+
+<!-- You can add Product 2 and 3 similarly if you want -->
+
+<div class="footer">
+  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+  <a href="https://linkedin.com/in/santvalentinas" target="_blank">LinkedIn</a>
 </div>
-<div class="product" id="winedine">
-  <div class="product-title">Insider's Dine &amp; Wine</div>
-  <div class="product-desc">60 Curated Cards with Native Audio — €16.99</div>
-  <div class="deck-tabs" id="tabs-3">
-    <button class="tab-btn active" onclick="switchDeck(3,'wine')">Wine</button>
-    <button class="tab-btn" onclick="switchDeck(3,'dine')">Dine</button>
-  </div>
-  <div class="card-area">
-    <div class="card-wrapper" id="card-3" onclick="flipCard(3)">
-      <div class="card-inner">
-        <div class="card-face">
-          <div class="card-label" id="card-3-label">Wine</div>
-          <div class="card-french" id="card-3-french">Un verre de rouge, s'il vous plaît.</div>
-          <div class="card-phonetic" id="card-3-phonetic">œ̃ vɛr də ruʒ, sil vu plɛ</div>
-          <div class="card-tap">TAP TO FLIP</div>
-        </div>
-        <div class="card-face card-back">
-          <div class="card-label">Translation</div>
-          <div class="card-english" id="card-3-english">A glass of red, please.</div>
-          <div class="card-context" id="card-3-context">The baseline. Confident, unhurried. No over-explaining necessary.</div>
-          <div class="card-tap">TAP TO FLIP BACK</div>
-        </div>
-      </div>
-    </div>
-    <button class="audio-btn" onclick="speak('card-3-french')">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Listen
-    </button>
-    <div class="card-nav">
-      <button class="nav-btn" onclick="prevCard(3)">← Prev</button>
-      <span class="card-counter" id="counter-3">1 / 10</span>
-      <button class="nav-btn" onclick="nextCard(3)">Next →</button>
-    </div>
-    <a href="https://payhip.com/b/RZeUL" target="_blank" class="buy-btn">Buy Now</a>
-  </div>
-</div>
-<div class="consulting">
-  <div class="consulting-title">Paris Decoded</div>
-  <div class="consulting-sub">Private Intelligence Session — €250.00</div>
-  <p class="consulting-body">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director. Having spent years at the intersection of New York's pace and Parisian tradition, she delivers precise insight into the city's unspoken codes, etiquette, and interior logic.</p>
-  <div class="consulting-detail">
-    <div class="detail-item">Format <span>90-min session</span></div>
-    <div class="detail-item">Mode <span>Video or In-Person (Paris)</span></div>
-    <div class="detail-item">Booking <span>Immediate calendar access</span></div>
-  </div>
-  <p class="consulting-body">Tailored to your specific social or travel situation.</p>
-  <div class="consulting-quote">Paris doesn't reward trying. It rewards restraint.</div>
-  <a href="https://payhip.com/b/e67iO" target="_blank" class="learn-btn">Learn More</a>
-</div>
-<footer>
-  <div class="footer-links">
-    <a href="https://linkedin.com/in/santvalentinas" target="_blank">LinkedIn</a>
-    <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
-  </div>
-  <div class="footer-copy">© 2025 Minimum French Maximum Parisian</div>
-</footer>
+
 <script>
-const decks={flirting:[{fr:"Tu as de beaux yeux.",ph:"tü a də bō zyö",en:"You have beautiful eyes.",ctx:"Classic opener. Works best with direct eye contact and a pause after."},{fr:"Tu me manques déjà.",ph:"tü mə mɑ̃k deʒa",en:"I already miss you.",ctx:"Said before someone leaves. The timing makes it land."},{fr:"Je t'aime bien.",ph:"zhə tɛm bjɛ̃",en:"I like you.",ctx:"Understated. In French, this is significant — never overstate."},{fr:"C'est rare, quelqu'un comme toi.",ph:"sɛ rar kɛlkœ̃ kɔm twa",en:"Someone like you is rare.",ctx:"Observational. Not a compliment — a verdict."},{fr:"Tu m'intrigues.",ph:"tü mɛ̃trig",en:"You intrigue me.",ctx:"Sophisticated. Implies intelligence, not just attraction."},{fr:"On se revoit quand?",ph:"ɔ̃ sə rvwa kɑ̃",en:"When do we see each other again?",ctx:"Direct without being aggressive. Confident, assumes the answer is yes."},{fr:"Tu as un sourire dévastateur.",ph:"tü a œ̃ surir devastatœr",en:"You have a devastating smile.",ctx:"High-impact. Use sparingly."},{fr:"Je ne t'oublie pas.",ph:"zhə nə tübli pa",en:"I don't forget you.",ctx:"Said after time apart. Quiet, but it stays with people."},{fr:"Tu me fais rire.",ph:"tü mə fɛ rir",en:"You make me laugh.",ctx:"Underrated in French flirting. Warmth matters."},{fr:"Je t'attendais.",ph:"zhə tatɑ̃dɛ",en:"I was waiting for you.",ctx:"Poetic and direct at once. Works in any context."}],dating:[{fr:"On pourrait aller dîner un soir?",ph:"ɔ̃ purɛ ale dine œ̃ swar",en:"We could go to dinner one evening?",ctx:"Casual but deliberate. The question mark is key — it's an invitation, not a command."},{fr:"J'ai réservé pour deux.",ph:"zhɛ rezerve pur dø",en:"I made a reservation for two.",ctx:"Confident assumption. Say it after they've already agreed — not before."},{fr:"Tu préfères le blanc ou le rouge?",ph:"tü preferə lə blɑ̃ u lə ruʒ",en:"Do you prefer white or red?",ctx:"Starting the date right. Shows you're paying attention."},{fr:"Je suis content(e) qu'on soit là.",ph:"zhə sɥi kɔ̃tɑ̃ kɔ̃ swa la",en:"I'm glad we're here.",ctx:"Simple. Present. Genuine."},{fr:"On a le temps.",ph:"ɔ̃ na lə tɑ̃",en:"We have time.",ctx:"The antidote to rushing. Parisian pace."},{fr:"Je t'écoute.",ph:"zhə tekut",en:"I'm listening to you.",ctx:"Said with full attention. Rare, and people notice."},{fr:"C'était une très bonne soirée.",ph:"setɛ yn trɛ bɔn sware",en:"It was a very good evening.",ctx:"The close. Measured but warm."},{fr:"On recommence quand?",ph:"ɔ̃ rəkɔmɑ̃s kɑ̃",en:"When do we do this again?",ctx:"Direct. Assumes it went well — because it did."},{fr:"Tu m'as beaucoup manqué.",ph:"tü ma boku mɑ̃ke",en:"I missed you a lot.",ctx:"Said with ease, not desperation. Weight without weight."},{fr:"Je pense à toi.",ph:"zhə pɑ̃s a twa",en:"I'm thinking of you.",ctx:"Simple text or voicemail. Doesn't need elaboration."}],wine:[{fr:"Un verre de rouge, s'il vous plaît.",ph:"œ̃ vɛr də ruʒ sil vu plɛ",en:"A glass of red, please.",ctx:"The baseline. Confident, unhurried."},{fr:"Qu'est-ce que vous recommandez?",ph:"kɛs kə vu rəkɔmɑ̃de",en:"What do you recommend?",ctx:"Defers to expertise. The sommelier will respect it."},{fr:"Un bordeaux, s'il vous plaît.",ph:"œ̃ bɔrdo sil vu plɛ",en:"A Bordeaux, please.",ctx:"Regional specificity signals knowledge."},{fr:"C'est bien équilibré.",ph:"sɛ bjɛ̃ ekilibre",en:"It's well balanced.",ctx:"The highest compliment for a wine."},{fr:"Il a du corps.",ph:"il a dy kɔr",en:"It has body.",ctx:"Structure vocabulary. Shows fluency."},{fr:"On peut avoir la carte des vins?",ph:"ɔ̃ pø avwar la kart de vɛ̃",en:"Could we have the wine list?",ctx:"Polite, not demanding. The right way to ask."},{fr:"Je prendrai le même.",ph:"zhə prɑ̃drɛ lə mɛm",en:"I'll have the same.",ctx:"High compliment to whoever ordered first."},{fr:"Il est encore jeune.",ph:"il ɛt ɑ̃kɔr zhœn",en:"It's still young.",ctx:"Said of a wine not yet at its peak. Demonstrates palate."},{fr:"Un pichet de maison, c'est possible?",ph:"œ̃ piʃɛ də mɛzɔ̃ sɛ pɔsibl",en:"A carafe of house wine, is that possible?",ctx:"Casual and confident. No pretension required."},{fr:"Parfait avec le plat.",ph:"parfɛ avɛk lə pla",en:"Perfect with the dish.",ctx:"The pairing comment. Brief, assured."}],dine:[{fr:"L'addition, s'il vous plaît.",ph:"ladisjɔ̃ sil vu plɛ",en:"The bill, please.",ctx:"Direct. No need to gesture — just say it."},{fr:"C'est délicieux.",ph:"sɛ delisjø",en:"It's delicious.",ctx:"Simple and true. The best compliment."},{fr:"Je vais prendre ça.",ph:"zhə vɛ prɑ̃dr sa",en:"I'll take that.",ctx:"Confident ordering. No 'I think I'll try...'"},{fr:"Qu'est-ce que vous avez comme entrées?",ph:"kɛs kə vu zave kɔm ɑ̃tre",en:"What do you have for starters?",ctx:"When the menu isn't obvious. Shows engagement."},{fr:"C'est pour partager.",ph:"sɛ pur partaʒe",en:"It's to share.",ctx:"Ordering for the table. Communal dining signal."},{fr:"Pas trop cuit, s'il vous plaît.",ph:"pa tro kɥi sil vu plɛ",en:"Not too cooked, please.",ctx:"Know your preference. State it without apology."},{fr:"Excellent choix.",ph:"ɛksɛlɑ̃ ʃwa",en:"Excellent choice.",ctx:"To a companion after they order. Warm, social."},{fr:"On peut rester encore un peu?",ph:"ɔ̃ pø rɛste ɑ̃kɔr œ̃ pø",en:"Can we stay a little longer?",ctx:"The French don't rush. Neither should you."},{fr:"C'était vraiment bon.",ph:"setɛ vrɛmɑ̃ bɔ̃",en:"It was really good.",ctx:"Said to the server before leaving. It matters."},{fr:"Je reviendrai.",ph:"zhə rəvjɛ̃drɛ",en:"I'll come back.",ctx:"The best thing you can say to a restaurant."}]};
-const state={1:{deck:'flirting',idx:0},2:{deck:'flirting',idx:0},3:{deck:'wine',idx:0}};
-function getCards(d){return decks[d]||decks.flirting;}
-function renderCard(pid){const s=state[pid];const cards=getCards(s.deck);const card=cards[s.idx];if(!card)return;document.getElementById('card-'+pid).classList.remove('flipped');document.getElementById('card-'+pid+'-label').textContent=s.deck.charAt(0).toUpperCase()+s.deck.slice(1);document.getElementById('card-'+pid+'-french').textContent=card.fr;document.getElementById('card-'+pid+'-phonetic').textContent=card.ph;document.getElementById('card-'+pid+'-english').textContent=card.en;document.getElementById('card-'+pid+'-context').textContent=card.ctx;document.getElementById('counter-'+pid).textContent=(s.idx+1)+' / '+cards.length;}
-function flipCard(pid){document.getElementById('card-'+pid).classList.toggle('flipped');}
-function nextCard(pid){const s=state[pid];const cards=getCards(s.deck);s.idx=(s.idx+1)%cards.length;renderCard(pid);}
-function prevCard(pid){const s=state[pid];const cards=getCards(s.deck);s.idx=(s.idx-1+cards.length)%cards.length;renderCard(pid);}
-function switchDeck(pid,deckName){state[pid].deck=deckName;state[pid].idx=0;renderCard(pid);document.getElementById('tabs-'+pid).querySelectorAll('.tab-btn').forEach(btn=>{btn.classList.toggle('active',btn.textContent.toLowerCase()===deckName);});}
-function speak(id){const text=document.getElementById(id).textContent;if('speechSynthesis' in window){window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=0.85;window.speechSynthesis.speak(u);}}
-renderCard(1);renderCard(2);renderCard(3);
+const decks = {
+  1: {
+    flirting: [
+      {fr: "Tu as de beaux yeux.", en: "You have beautiful eyes.", mean: "Classic opener"},
+      {fr: "Tu me manques déjà.", en: "I already miss you.", mean: "Sweet & effective"},
+      {fr: "Je t'aime bien.", en: "I like you.", mean: "Understated but powerful"},
+      {fr: "On se revoit quand ?", en: "When do we see each other again?", mean: "Confident close"}
+    ],
+    dating: [ /* add more */ ],
+    wine: [ /* add more */ ],
+    dine: [ /* add more */ ]
+  }
+};
+
+let state = {1: {tab: 'flirting', idx: 0}};
+
+function getCurrentDeck(pid) {
+  return decks[pid][state[pid].tab];
+}
+
+function updateCard(pid) {
+  const deck = getCurrentDeck(pid);
+  const card = deck[state[pid].idx];
+  
+  document.getElementById(`french${pid}`).textContent = card.fr;
+  document.getElementById(`english${pid}`).textContent = card.en;
+  document.getElementById(`meaning${pid}`).textContent = card.mean;
+  document.getElementById(`counter${pid}`).textContent = `${state[pid].idx + 1} / ${deck.length}`;
+}
+
+function flipCard(pid) {
+  document.getElementById(`card${pid}`).classList.toggle('flipped');
+}
+
+function nextCard(pid) {
+  const deck = getCurrentDeck(pid);
+  state[pid].idx = (state[pid].idx + 1) % deck.length;
+  updateCard(pid);
+  document.getElementById(`card${pid}`).classList.remove('flipped');
+}
+
+function prevCard(pid) {
+  const deck = getCurrentDeck(pid);
+  state[pid].idx = (state[pid].idx - 1 + deck.length) % deck.length;
+  updateCard(pid);
+  document.getElementById(`card${pid}`).classList.remove('flipped');
+}
+
+function switchTab(pid, tab) {
+  state[pid].tab = tab;
+  state[pid].idx = 0;
+  document.querySelectorAll(`#tabs${pid} .tab-btn`).forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(tab));
+  });
+  updateCard(pid);
+}
+
+function speak(pid, e) {
+  e.stopPropagation();
+  const deck = getCurrentDeck(pid);
+  const text = deck[state[pid].idx].fr;
+  
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'fr-FR';
+  utterance.rate = 0.9;
+  speechSynthesis.speak(utterance);
+}
+
+updateCard(1);
 </script>
 </body>
 </html>
