@@ -3,55 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minimum French — Shop</title>
+<title>Minimum French — Maximum Parisian</title>
 <script src="https://payhip.com/payhip.js"></script>
+
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
-.header { padding: 60px 20px 40px; text-align: center; border-bottom: 1px solid #222; }
+.header { padding: 50px 20px 30px; text-align: center; border-bottom: 1px solid #222; }
 .header-title { font-size: 28px; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; }
-.header-subtitle { font-size: 14px; letter-spacing: 2px; color: #888; margin-top: 10px; }
+.header-subtitle { font-size: 14px; letter-spacing: 2px; color: #aaa; margin-top: 10px; }
 
-.product-section { padding: 70px 20px; border-bottom: 1px solid #222; }
-.section-inner { max-width: 640px; margin: 0 auto; }
-.product-title { font-size: 22px; letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-bottom: 12px; }
-.product-desc { font-size: 15px; color: #aaa; text-align: center; max-width: 520px; margin: 0 auto 40px; }
+.product-section { padding: 60px 20px; border-bottom: 1px solid #222; }
+.section-inner { max-width: 520px; margin: 0 auto; }
 
-.tabs-container { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
-.tab-btn { background: none; border: none; color: #666; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; padding: 8px 0; cursor: pointer; position: relative; }
-.tab-btn.active { color: #fff; }
-.tab-btn.active:after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px; background: #fff; }
+.product-title { font-size: 18px; letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
+.product-desc { font-size: 14px; color: #aaa; text-align: center; margin-bottom: 35px; }
 
-.card-wrapper { width: 100%; max-width: 460px; margin: 0 auto 30px; perspective: 1200px; }
-.card { width: 100%; height: 520px; position: relative; transform-style: preserve-3d; transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid #333; }
+.tabs-container { display: flex; justify-content: center; gap: 18px; margin-bottom: 30px; flex-wrap: wrap; }
+.tab-btn { background: none; border: none; color: #666; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 6px 12px; cursor: pointer; }
+.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
+
+.card-wrapper { width: 100%; max-width: 420px; margin: 0 auto 30px; perspective: 1200px; }
+.card { width: 100%; height: 420px; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); cursor: pointer; border: 1px solid #333; }
 .card.flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; inset: 0; backface-visibility: hidden; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 30px; text-align: center; }
+
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 30px; text-align: center; }
 .card-back { transform: rotateY(180deg); }
 
-.french-text { font-size: 24px; line-height: 1.35; margin-bottom: 24px; }
-.audio-btn { margin: 16px 0; background: transparent; color: #fff; border: 1px solid #fff; padding: 10px 28px; font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+.french-text { font-size: 26px; line-height: 1.3; margin-bottom: 30px; }
+.audio-btn { background: transparent; border: 1px solid #fff; color: #fff; padding: 10px 34px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin: 15px 0; }
 .audio-btn:hover { background: #fff; color: #000; }
 
-.english-text { font-size: 22px; margin-bottom: 18px; }
-.meaning-text { font-size: 13px; letter-spacing: 1.5px; color: #999; text-transform: uppercase; }
+.english-text { font-size: 23px; margin-bottom: 16px; }
+.meaning-text { font-size: 13px; color: #aaa; }
 
-.tap-hint { font-size: 10px; letter-spacing: 1.8px; color: #555; margin-top: 30px; text-transform: uppercase; }
+.nav-section { display: flex; justify-content: space-between; align-items: center; max-width: 420px; margin: 0 auto; }
+.nav-btn { background: none; border: 1px solid #444; color: #aaa; padding: 9px 20px; font-size: 11px; letter-spacing: 1px; cursor: pointer; }
+.nav-btn:disabled { opacity: 0.4; cursor: default; }
 
-.nav-section { display: flex; justify-content: space-between; align-items: center; max-width: 460px; margin: 0 auto; }
-.nav-btn { background: transparent; border: 1px solid #555; color: #aaa; padding: 10px 22px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
-.nav-btn:hover:not(:disabled) { background: #fff; color: #000; border-color: #fff; }
-.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
-.cta-buttons { text-align: center; margin-top: 40px; }
-.payhip-buy-button { 
-  background: #fff !important; color: #000 !important; padding: 16px 48px !important; 
-  font-size: 11.5px !important; letter-spacing: 2.5px !important; text-transform: uppercase !important; 
-  font-weight: 500 !important; border: none !important; cursor: pointer !important;
-}
-
-.footer { padding: 80px 20px 60px; text-align: center; }
-.footer a { color: #666; margin: 0 25px; text-decoration: none; font-size: 14px; }
+.buy-btn { display: block; margin: 40px auto 0; padding: 14px 40px; background: #fff; color: #000; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; width: fit-content; }
 </style>
 </head>
 <body>
@@ -61,123 +52,138 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <div class="header-subtitle">MAXIMUM PARISIAN</div>
 </div>
 
-<!-- Product 1 -->
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">THE COMPLETE PARIS SET</div>
     <div class="product-desc">120+ Curated Cards with Native Audio — €27.00</div>
-    
+
     <div class="tabs-container" id="tabs1">
-      <button class="tab-btn active" onclick="switchTab(1,'flirting')">FLIRTING</button>
-      <button class="tab-btn" onclick="switchTab(1,'dating')">DATING</button>
-      <button class="tab-btn" onclick="switchTab(1,'wine')">WINE</button>
-      <button class="tab-btn" onclick="switchTab(1,'dine')">DINE</button>
+      <button class="tab-btn active" onclick="switchTab('flirting')">FLIRTING</button>
+      <button class="tab-btn" onclick="switchTab('dating')">DATING</button>
+      <button class="tab-btn" onclick="switchTab('wine')">WINE</button>
+      <button class="tab-btn" onclick="switchTab('dine')">DINE</button>
     </div>
 
     <div class="card-wrapper">
-      <div class="card" id="card1" onclick="flipCard(1)">
+      <div class="card" id="card1" onclick="flipCard()">
         <div class="card-face">
-          <div class="french-text" id="french1">Tu as de beaux yeux.</div>
-          <button class="audio-btn" onclick="speak(1, event)">LISTEN</button>
-          <div class="tap-hint">TAP TO FLIP</div>
+          <div class="french-text" id="french1">T'as un truc en plus</div>
+          <button class="audio-btn" onclick="speak(event)">LISTEN</button>
         </div>
         <div class="card-face card-back">
-          <div class="english-text" id="english1">You have beautiful eyes.</div>
-          <div class="meaning-text" id="meaning1">Classic opener. Use with confidence.</div>
-          <div class="tap-hint">TAP TO FLIP BACK</div>
+          <div class="english-text" id="english1">You have something extra</div>
+          <div class="meaning-text" id="meaning1">The compliment that lands</div>
         </div>
       </div>
     </div>
 
     <div class="nav-section">
-      <button class="nav-btn" onclick="prevCard(1)">← PREV</button>
-      <span id="counter1">1 / 10</span>
-      <button class="nav-btn" onclick="nextCard(1)">NEXT →</button>
+      <button class="nav-btn" onclick="prevCard()">← PREV</button>
+      <span id="counter1">1 / 12</span>
+      <button class="nav-btn" onclick="nextCard()">NEXT →</button>
     </div>
 
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-product="z29J1">BUY NOW — €27.00</a>
-    </div>
+    <a href="https://payhip.com/b/z29J1" class="buy-btn">BUY NOW — €27.00</a>
   </div>
 </div>
 
-<!-- You can add Product 2 and 3 similarly if you want -->
-
-<div class="footer">
-  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
-  <a href="https://linkedin.com/in/santvalentinas" target="_blank">LinkedIn</a>
-</div>
-
 <script>
+// Card Data
 const decks = {
-  1: {
-    flirting: [
-      {fr: "Tu as de beaux yeux.", en: "You have beautiful eyes.", mean: "Classic opener"},
-      {fr: "Tu me manques déjà.", en: "I already miss you.", mean: "Sweet & effective"},
-      {fr: "Je t'aime bien.", en: "I like you.", mean: "Understated but powerful"},
-      {fr: "On se revoit quand ?", en: "When do we see each other again?", mean: "Confident close"}
-    ],
-    dating: [ /* add more */ ],
-    wine: [ /* add more */ ],
-    dine: [ /* add more */ ]
-  }
+  flirting: [
+    {fr:"T'as un truc en plus", en:"You have something extra", mean:"The compliment that lands"},
+    {fr:"Tu as de beaux yeux.", en:"You have beautiful eyes.", mean:"Classic opener"},
+    {fr:"Tu me manques déjà.", en:"I already miss you.", mean:"Sweet & effective"},
+    {fr:"Je t'aime bien.", en:"I like you.", mean:"Understated but powerful"},
+    {fr:"On se revoit quand ?", en:"When do we see each other again?", mean:"Confident close"}
+  ],
+  // Add more categories later if you want
+  dating: [],
+  wine: [],
+  dine: []
 };
 
-let state = {1: {tab: 'flirting', idx: 0}};
+let currentTab = 'flirting';
+let currentIndex = 0;
 
-function getCurrentDeck(pid) {
-  return decks[pid][state[pid].tab];
-}
-
-function updateCard(pid) {
-  const deck = getCurrentDeck(pid);
-  const card = deck[state[pid].idx];
+function updateCard() {
+  const cards = decks[currentTab] || decks.flirting;
+  const card = cards[currentIndex];
   
-  document.getElementById(`french${pid}`).textContent = card.fr;
-  document.getElementById(`english${pid}`).textContent = card.en;
-  document.getElementById(`meaning${pid}`).textContent = card.mean;
-  document.getElementById(`counter${pid}`).textContent = `${state[pid].idx + 1} / ${deck.length}`;
+  document.getElementById('french1').textContent = card.fr;
+  document.getElementById('english1').textContent = card.en;
+  document.getElementById('meaning1').textContent = card.mean;
+  document.getElementById('counter1').textContent = (currentIndex + 1) + " / " + cards.length;
 }
 
-function flipCard(pid) {
-  document.getElementById(`card${pid}`).classList.toggle('flipped');
+function flipCard() {
+  document.getElementById('card1').classList.toggle('flipped');
 }
 
-function nextCard(pid) {
-  const deck = getCurrentDeck(pid);
-  state[pid].idx = (state[pid].idx + 1) % deck.length;
-  updateCard(pid);
-  document.getElementById(`card${pid}`).classList.remove('flipped');
+function nextCard() {
+  const cards = decks[currentTab] || decks.flirting;
+  currentIndex = (currentIndex + 1) % cards.length;
+  updateCard();
+  document.getElementById('card1').classList.remove('flipped');
 }
 
-function prevCard(pid) {
-  const deck = getCurrentDeck(pid);
-  state[pid].idx = (state[pid].idx - 1 + deck.length) % deck.length;
-  updateCard(pid);
-  document.getElementById(`card${pid}`).classList.remove('flipped');
+function prevCard() {
+  const cards = decks[currentTab] || decks.flirting;
+  currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+  updateCard();
+  document.getElementById('card1').classList.remove('flipped');
 }
 
-function switchTab(pid, tab) {
-  state[pid].tab = tab;
-  state[pid].idx = 0;
-  document.querySelectorAll(`#tabs${pid} .tab-btn`).forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.toLowerCase().includes(tab));
+function switchTab(tabName) {
+  currentTab = tabName;
+  currentIndex = 0;
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === tabName);
   });
-  updateCard(pid);
+  updateCard();
 }
 
-function speak(pid, e) {
+// === WOMAN VOICE PREFERENCE ===
+function speak(e) {
   e.stopPropagation();
-  const deck = getCurrentDeck(pid);
-  const text = deck[state[pid].idx].fr;
-  
+  const cards = decks[currentTab] || decks.flirting;
+  const text = cards[currentIndex].fr;
+
+  speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
-  utterance.rate = 0.9;
+  utterance.rate = 0.92;
+  utterance.pitch = 1.05;
+
+  // Try to force female voice
+  const voices = speechSynthesis.getVoices();
+  let femaleVoice = voices.find(v => 
+    v.lang.startsWith('fr') && 
+    (v.name.toLowerCase().includes('amélie') || 
+     v.name.toLowerCase().includes('alice') || 
+     v.name.toLowerCase().includes('sophie') || 
+     v.name.toLowerCase().includes('camille') ||
+     v.name.toLowerCase().includes('female') ||
+     v.name.toLowerCase().includes('woman'))
+  );
+
+  if (femaleVoice) {
+    utterance.voice = femaleVoice;
+  } else {
+    // fallback to any French voice
+    const anyFrench = voices.find(v => v.lang.startsWith('fr'));
+    if (anyFrench) utterance.voice = anyFrench;
+  }
+
   speechSynthesis.speak(utterance);
 }
 
-updateCard(1);
+// Load voices
+if ('speechSynthesis' in window) {
+  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+}
+
+updateCard();
 </script>
 </body>
 </html>
