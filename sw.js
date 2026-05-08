@@ -1,7 +1,9 @@
 const CACHE_NAME = 'minimum-french-v1';
 const urlsToCache = [
   '/interfaces/shop.html',
-  '/interfaces/manifest.json'
+  '/interfaces/manifest.json',
+  '/interfaces/icon-192.png',
+  '/interfaces/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
