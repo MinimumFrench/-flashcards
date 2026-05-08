@@ -1,6 +1,6 @@
 {
-  "name": "Minimum French Maximum Parisian",
-  "short_name": "Minimum French",
+  "name": "Minimum French",
+  "short_name": "Min French",
   "description": "Paris, decoded. Know what to say — without second guessing yourself.",
   "start_url": "/interfaces/shop.html",
   "display": "standalone",
