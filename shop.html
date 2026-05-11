@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minimum French — Shop</title>
-<script type="text/javascript" src="https://payhip.com/payhip.js"></script>
+
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -22,92 +22,172 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 .product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; line-height: 1.4; text-align: center; }
 .product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
-.tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
-.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
-.tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
-.card-wrapper { width: 100%; max-width: 450px; perspective: 1200px; }
-.card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-.card.flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
-.card-back { transform: rotateY(180deg); }
-.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 20px; }
-.french-text { font-size: 20px; font-weight: 400; line-height: 1.3; margin-bottom: 24px; }
-.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s; }
-.audio-btn:hover { background: #fff; color: #000; }
-.english-text { font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 20px; }
-.meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
-.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; }
-.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 450px; }
-.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; transition: all 0.2s; }
-.nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
-.nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
-.progress { font-size: 12px; color: #999; }
-.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
-.payhip-buy-button { background: #fff !important; color: #000 !important; border: 1px solid #fff !important; padding: 12px 32px !important; font-size: 11px !important; letter-spacing: 2px !important; text-transform: uppercase !important; font-weight: 500 !important; display: inline-block !important; text-decoration: none !important; cursor: pointer !important; transition: opacity 0.2s !important; font-family: inherit !important; }
-.payhip-buy-button:hover { opacity: 0.9 !important; }
-.footer { padding: 40px 24px; text-align: center; }
-.footer a { font-size: 16px; color: #fff; margin: 0 24px; transition: color 0.2s; text-decoration: none; display: inline-block; letter-spacing: 1px; }
-.footer a:hover { color: #aaa; }
+
+.cta-buttons {
+display: flex;
+gap: 12px;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 24px;
+}
+
+.payhip-buy-button {
+background: #fff !important;
+color: #000 !important;
+border: 1px solid #fff !important;
+padding: 12px 32px !important;
+font-size: 11px !important;
+letter-spacing: 2px !important;
+text-transform: uppercase !important;
+font-weight: 500 !important;
+display: inline-block !important;
+text-decoration: none !important;
+cursor: pointer !important;
+transition: opacity 0.2s !important;
+font-family: inherit !important;
+}
+
+.payhip-buy-button:hover {
+opacity: 0.9 !important;
+}
+
+.footer {
+padding: 40px 24px;
+text-align: center;
+}
+
+.footer a {
+font-size: 16px;
+color: #fff;
+margin: 0 24px;
+transition: color 0.2s;
+text-decoration: none;
+display: inline-block;
+letter-spacing: 1px;
+}
+
+.footer a:hover {
+color: #aaa;
+}
 </style>
 </head>
+
 <body>
 
 <div class="header">
-  <div class="header-title">Minimum French Maximum Parisian</div>
-  <div class="header-subtitle">Paris, decoded. Know what to say — without second guessing yourself.</div>
+<div class="header-title">Minimum French Maximum Parisian</div>
+<div class="header-subtitle">
+Paris, decoded. Know what to say — without second guessing yourself.
+</div>
 </div>
 
-<!-- PRODUCT 1 - COMPLETE PARIS SET -->
+<!-- PRODUCT 1 -->
 <div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">THE COMPLETE PARIS SET</div>
-    <div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris.</div>
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none">Buy Now — €27.00</a>
-    </div>
-  </div>
+<div class="section-inner">
+
+<div class="product-title">THE COMPLETE PARIS SET</div>
+
+<div class="product-desc">
+120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.
 </div>
 
-<!-- PRODUCT 2 - ROMANCE -->
-<div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations.</div>
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none">Buy Now — €16.99</a>
-    </div>
-  </div>
+<div class="preview-container">
+<!-- YOUR EXISTING CARD PREVIEW STAYS HERE -->
 </div>
 
-<!-- PRODUCT 3 - WINE & DINE -->
+<div class="cta-buttons">
+<a href="https://payhip.com/b/z29J1"
+target="_blank"
+class="payhip-buy-button">
+Buy Now — €27.00
+</a>
+</div>
+
+</div>
+</div>
+
+<!-- PRODUCT 2 -->
 <div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">INSIDER'S DINE & WINE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio. Essential phrases for restaurants and wine.</div>
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none">Buy Now — €16.99</a>
-    </div>
-  </div>
+<div class="section-inner">
+
+<div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
+
+<div class="product-desc">
+60 Curated Cards with Native Audio. Real phrases used in romantic situations...
+</div>
+
+<div class="preview-container">
+<!-- YOUR EXISTING CARD PREVIEW STAYS HERE -->
+</div>
+
+<div class="cta-buttons">
+<a href="https://payhip.com/b/pJcgl"
+target="_blank"
+class="payhip-buy-button">
+Buy Now — €16.99
+</a>
+</div>
+
+</div>
+</div>
+
+<!-- PRODUCT 3 -->
+<div class="product-section">
+<div class="section-inner">
+
+<div class="product-title">INSIDER'S DINE & WINE</div>
+
+<div class="product-desc">
+60 Curated Cards with Native Audio...
+</div>
+
+<div class="preview-container">
+<!-- YOUR EXISTING CARD PREVIEW STAYS HERE -->
+</div>
+
+<div class="cta-buttons">
+<a href="https://payhip.com/b/RZeUL"
+target="_blank"
+class="payhip-buy-button">
+Buy Now — €16.99
+</a>
+</div>
+
+</div>
 </div>
 
 <!-- CONSULTING -->
 <div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">PARIS DECODED</div>
-    <div class="product-desc">90-minute private intelligence session with Rita Sant Valentinas.</div>
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none">BOOK CONSULTING SESSION — €250.00</a>
-    </div>
-  </div>
+<div class="section-inner">
+
+<div class="product-title">PARIS DECODED</div>
+
+<div style="font-size: 13px; letter-spacing: 1px; color: #aaa; margin-bottom: 20px; font-weight: 300; line-height: 1.6;">
+Private Intelligence Session
+</div>
+
+<div class="product-desc">
+Direct access to Rita Sant Valentinas...
+</div>
+
+<div class="cta-buttons">
+<a href="https://payhip.com/b/e67iO"
+target="_blank"
+class="payhip-buy-button">
+BOOK CONSULTING SESSION — €250.00
+</a>
+</div>
+
+</div>
 </div>
 
 <div class="footer">
-  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
-  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
+<a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
+<a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
 </div>
 
 <script>
-/* Your full card flipping script stays exactly the same */
+/* YOUR EXISTING CARD JAVASCRIPT STAYS EXACTLY THE SAME */
 </script>
 
 </body>
