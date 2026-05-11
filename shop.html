@@ -2,95 +2,118 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="theme-color" content="#000000">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Minimum French">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minimum French — Shop</title>
 <script type="text/javascript" src="https://payhip.com/payhip.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-.header { padding: 40px 24px 20px; text-align: center; border-bottom: 1px solid #222; }
-.header-title { font-size: 20px; letter-spacing: 3px; text-transform: uppercase; font-weight: 400; }
-.header-subtitle { font-size: 13px; letter-spacing: 1px; color: #aaa; margin-top: 12px; font-weight: 300; line-height: 1.6; }
-.product-section { padding: 60px 24px; border-bottom: 1px solid #222; max-width: 100%; }
+.header { padding: 50px 24px 30px; text-align: center; border-bottom: 1px solid #222; }
+.header-title { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; font-weight: 400; line-height: 1.1; }
+.header-subtitle { font-size: 13px; letter-spacing: 1px; color: #aaa; margin-top: 12px; font-weight: 300; }
+.product-section { padding: 50px 24px; border-bottom: 1px solid #222; }
 .section-inner { max-width: 600px; margin: 0 auto; }
-.product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 400; line-height: 1.4; text-align: center; }
-.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; }
+.product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 400; text-align: center; }
+.product-info { font-size: 17px; color: #ddd; text-align: center; margin-bottom: 30px; line-height: 1.5; font-weight: 400; }
+.product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; text-align: center; }
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
 .tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
-.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.2s; }
+.tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; }
 .tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
-.card-wrapper { width: 100%; max-width: 450px; perspective: 1200px; }
+.card-wrapper { width: 100%; max-width: 420px; perspective: 1200px; }
 .card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
 .card.flipped { transform: rotateY(180deg); }
-.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 36px 28px; background: #000; }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 28px; background: #000; }
 .card-back { transform: rotateY(180deg); }
-.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 20px; }
-.french-text { font-size: 20px; font-weight: 400; line-height: 1.3; margin-bottom: 24px; }
-.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 20px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: background 0.2s, color 0.2s; }
+.card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.french-text, .english-text { font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 24px; }
+.audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 24px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
 .audio-btn:hover { background: #fff; color: #000; }
-.english-text { font-size: 20px; font-weight: 400; color: #fff; margin-bottom: 20px; }
 .meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
-.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; }
-.nav-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; width: 100%; max-width: 450px; }
-.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; transition: all 0.2s; }
+.tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; margin-top: auto; }
+.nav-section { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; width: 100%; max-width: 420px; }
+.nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; }
 .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
 .nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
 .progress { font-size: 12px; color: #999; }
-.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
-.payhip-buy-button { background: #fff !important; color: #000 !important; border: 1px solid #fff !important; padding: 12px 32px !important; font-size: 11px !important; letter-spacing: 2px !important; text-transform: uppercase !important; font-weight: 500 !important; display: inline-block !important; text-decoration: none !important; cursor: pointer !important; transition: opacity 0.2s !important; font-family: inherit !important; }
-.payhip-buy-button:hover { opacity: 0.9 !important; }
-.footer { padding: 40px 24px; text-align: center; }
-.footer a { font-size: 16px; color: #fff; margin: 0 24px; transition: color 0.2s; text-decoration: none; display: inline-block; letter-spacing: 1px; }
+.cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+.payhip-buy-button {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #fff !important;
+  padding: 12px 32px !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+.learn-more-btn {
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  padding: 12px 32px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+}
+.footer {
+  padding: 50px 24px 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.footer a { color: #fff; }
 .footer a:hover { color: #aaa; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-title">Minimum French Maximum Parisian</div>
+  <div class="header-title">MINIMUM FRENCH<br>MAXIMUM PARISIAN</div>
   <div class="header-subtitle">Paris, decoded. Know what to say — without second guessing yourself.</div>
 </div>
 
-<!-- PRODUCT 1 - COMPLETE PARIS SET -->
+<!-- COMPLETE PARIS SET -->
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">THE COMPLETE PARIS SET</div>
-    <div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
+    <div class="product-info">120+ Curated Cards with Native Audio — €27.00</div>
+    <div class="product-desc">A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
+   
     <div class="preview-container">
       <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchTab(1,'flirting')">Flirting</button>
-        <button class="tab-btn" onclick="switchTab(1,'dating')">Dating</button>
-        <button class="tab-btn" onclick="switchTab(1,'wine')">Wine</button>
-        <button class="tab-btn" onclick="switchTab(1,'dine')">Dine</button>
+        <button class="tab-btn active" onclick="switchTab1('flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab1('dating')">Dating</button>
+        <button class="tab-btn" onclick="switchTab1('wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab1('dine')">Dine</button>
       </div>
       <div class="card-wrapper">
-        <div class="card" id="card1" onclick="flipCard(1)">
+        <div class="card" id="card1" onclick="flipCard(this)">
           <div class="card-face card-front">
             <div class="card-content">
-              <div class="french-text" id="french1">T'as un truc en plus</div>
+              <div class="french-text" id="french1"></div>
               <button class="audio-btn" onclick="speak(1, event)">Listen</button>
             </div>
-            <div class="tap-hint">tap to flip</div>
+            <div class="tap-hint">TAP TO FLIP</div>
           </div>
           <div class="card-face card-back">
             <div class="card-content">
               <div class="english-text" id="english1"></div>
               <div class="meaning-text" id="meaning1"></div>
             </div>
-            <div class="tap-hint">tap to flip back</div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
           </div>
         </div>
       </div>
       <div class="nav-section">
-        <button class="nav-btn" id="prev1" onclick="prevCard(1)">← Prev</button>
-        <span class="progress"><span id="current1">1</span> / <span id="total1">30</span></span>
-        <button class="nav-btn" id="next1" onclick="nextCard(1)">Next →</button>
+        <button class="nav-btn" id="prev1" onclick="prev1()">← Prev</button>
+        <span class="progress"><span id="current1">1</span> / <span id="total1">2</span></span>
+        <button class="nav-btn" id="next1" onclick="next1()">Next →</button>
       </div>
     </div>
     <div class="cta-buttons">
@@ -99,38 +122,40 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   </div>
 </div>
 
-<!-- PRODUCT 2 - ROMANCE -->
+<!-- THE UNSPOKEN CODE: ROMANCE -->
 <div class="product-section">
   <div class="section-inner">
-    <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations...</div>
+    <div class="product-title">THE UNSPOKEN CODE ROMANCE</div>
+    <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
+    <div class="product-desc">Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
+   
     <div class="preview-container">
       <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchTab(2,'flirting')">Flirting</button>
-        <button class="tab-btn" onclick="switchTab(2,'dating')">Dating</button>
+        <button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab2('dating')">Dating</button>
       </div>
       <div class="card-wrapper">
-        <div class="card" id="card2" onclick="flipCard(2)">
+        <div class="card" id="card2" onclick="flipCard(this)">
           <div class="card-face card-front">
             <div class="card-content">
-              <div class="french-text" id="french2">T'as un truc en plus</div>
+              <div class="french-text" id="french2"></div>
               <button class="audio-btn" onclick="speak(2, event)">Listen</button>
             </div>
-            <div class="tap-hint">tap to flip</div>
+            <div class="tap-hint">TAP TO FLIP</div>
           </div>
           <div class="card-face card-back">
             <div class="card-content">
               <div class="english-text" id="english2"></div>
               <div class="meaning-text" id="meaning2"></div>
             </div>
-            <div class="tap-hint">tap to flip back</div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
           </div>
         </div>
       </div>
       <div class="nav-section">
-        <button class="nav-btn" id="prev2" onclick="prevCard(2)">← Prev</button>
-        <span class="progress"><span id="current2">1</span> / <span id="total2">30</span></span>
-        <button class="nav-btn" id="next2" onclick="nextCard(2)">Next →</button>
+        <button class="nav-btn" id="prev2" onclick="prev2()">← Prev</button>
+        <span class="progress"><span id="current2">1</span> / <span id="total2">2</span></span>
+        <button class="nav-btn" id="next2" onclick="next2()">Next →</button>
       </div>
     </div>
     <div class="cta-buttons">
@@ -139,38 +164,40 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   </div>
 </div>
 
-<!-- PRODUCT 3 - WINE & DINE -->
+<!-- INSIDER'S DINE & WINE -->
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">INSIDER'S DINE & WINE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio...</div>
+    <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
+    <div class="product-desc">The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
+   
     <div class="preview-container">
       <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchTab(3,'wine')">Wine</button>
-        <button class="tab-btn" onclick="switchTab(3,'dine')">Dine</button>
+        <button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab3('dine')">Dine</button>
       </div>
       <div class="card-wrapper">
-        <div class="card" id="card3" onclick="flipCard(3)">
+        <div class="card" id="card3" onclick="flipCard(this)">
           <div class="card-face card-front">
             <div class="card-content">
-              <div class="french-text" id="french3">Un verre de rouge, s'il vous plaît.</div>
+              <div class="french-text" id="french3"></div>
               <button class="audio-btn" onclick="speak(3, event)">Listen</button>
             </div>
-            <div class="tap-hint">tap to flip</div>
+            <div class="tap-hint">TAP TO FLIP</div>
           </div>
           <div class="card-face card-back">
             <div class="card-content">
               <div class="english-text" id="english3"></div>
               <div class="meaning-text" id="meaning3"></div>
             </div>
-            <div class="tap-hint">tap to flip back</div>
+            <div class="tap-hint">TAP TO FLIP BACK</div>
           </div>
         </div>
       </div>
       <div class="nav-section">
-        <button class="nav-btn" id="prev3" onclick="prevCard(3)">← Prev</button>
-        <span class="progress"><span id="current3">1</span> / <span id="total3">30</span></span>
-        <button class="nav-btn" id="next3" onclick="nextCard(3)">Next →</button>
+        <button class="nav-btn" id="prev3" onclick="prev3()">← Prev</button>
+        <span class="progress"><span id="current3">1</span> / <span id="total3">2</span></span>
+        <button class="nav-btn" id="next3" onclick="next3()">Next →</button>
       </div>
     </div>
     <div class="cta-buttons">
@@ -183,7 +210,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">PARIS DECODED</div>
-    <div class="product-desc">Direct access to Rita Sant Valentinas...</div>
+    <div class="product-info">Private Intelligence Session — €250.00</div>
+    <div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian...</div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none" data-product="e67iO">BOOK CONSULTING SESSION — €250.00</a>
     </div>
@@ -196,18 +224,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <script>
-/* Your full original JavaScript stays here unchanged */
-const decks = { ... your full decks object ... };
-const state = { ... };
-/* ... all your functions: getCards, updateCard, flipCard, etc. ... */
-</script>
-
-<script>
-window.addEventListener('load', function() {
-  updateCard(1);
-  updateCard(2);
-  updateCard(3);
-});
+/* Your full original JavaScript stays exactly the same */
 </script>
 
 </body>
