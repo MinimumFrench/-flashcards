@@ -61,7 +61,37 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <div class="section-inner">
     <div class="product-title">THE COMPLETE PARIS SET</div>
     <div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
-    <!-- your card preview stays the same -->
+    <div class="preview-container">
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(1,'flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab(1,'dating')">Dating</button>
+        <button class="tab-btn" onclick="switchTab(1,'wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab(1,'dine')">Dine</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card1" onclick="flipCard(1)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french1">T'as un truc en plus</div>
+              <button class="audio-btn" onclick="speak(1, event)">Listen</button>
+            </div>
+            <div class="tap-hint">tap to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english1"></div>
+              <div class="meaning-text" id="meaning1"></div>
+            </div>
+            <div class="tap-hint">tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev1" onclick="prevCard(1)">← Prev</button>
+        <span class="progress"><span id="current1">1</span> / <span id="total1">30</span></span>
+        <button class="nav-btn" id="next1" onclick="nextCard(1)">Next →</button>
+      </div>
+    </div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none">Buy Now — €27.00</a>
     </div>
@@ -72,47 +102,29 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations...</div>
-    <!-- your card preview stays the same -->
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none">Buy Now — €16.99</a>
-    </div>
-  </div>
-</div>
-
-<!-- PRODUCT 3 - WINE & DINE -->
-<div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">INSIDER'S DINE & WINE</div>
-    <div class="product-desc">60 Curated Cards with Native Audio...</div>
-    <!-- your card preview stays the same -->
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none">Buy Now — €16.99</a>
-    </div>
-  </div>
-</div>
-
-<!-- PARIS DECODED - CONSULTING -->
-<div class="product-section">
-  <div class="section-inner">
-    <div class="product-title">PARIS DECODED</div>
-    <div style="font-size: 13px; letter-spacing: 1px; color: #aaa; margin-bottom: 20px; font-weight: 300; line-height: 1.6;">Private Intelligence Session</div>
-    <div class="product-desc">Direct access to Rita Sant Valentinas...</div>
-    <div class="cta-buttons">
-      <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none">BOOK CONSULTING SESSION — €250.00</a>
-    </div>
-  </div>
-</div>
-
-<div class="footer">
-  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
-  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
-</div>
-
-<!-- Your full JavaScript stays exactly the same -->
-<script>
-/* ... your full script for decks, flipCard, speak, etc. ... */
-</script>
-
-</body>
-</html>
+    <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
+    <div class="preview-container">
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(2,'flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab(2,'dating')">Dating</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card2" onclick="flipCard(2)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french2">T'as un truc en plus</div>
+              <button class="audio-btn" onclick="speak(2, event)">Listen</button>
+            </div>
+            <div class="tap-hint">tap to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english2"></div>
+              <div class="meaning-text" id="meaning2"></div>
+            </div>
+            <div class="tap-hint">tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev2" onclick="prevCard(2)">← Prev</button
