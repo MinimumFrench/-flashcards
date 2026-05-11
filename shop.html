@@ -63,7 +63,35 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">THE COMPLETE PARIS SET</div>
     <div class="product-desc">120+ Curated Cards with Native Audio. A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
     <div class="preview-container">
-      <!-- Your card preview code stays the same -->
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(1,'flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab(1,'dating')">Dating</button>
+        <button class="tab-btn" onclick="switchTab(1,'wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab(1,'dine')">Dine</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card1" onclick="flipCard(1)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french1">T'as un truc en plus</div>
+              <button class="audio-btn" onclick="speak(1, event)">Listen</button>
+            </div>
+            <div class="tap-hint">tap to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english1"></div>
+              <div class="meaning-text" id="meaning1"></div>
+            </div>
+            <div class="tap-hint">tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev1" onclick="prevCard(1)">← Prev</button>
+        <span class="progress"><span id="current1">1</span> / <span id="total1">30</span></span>
+        <button class="nav-btn" id="next1" onclick="nextCard(1)">Next →</button>
+      </div>
     </div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
@@ -77,7 +105,33 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">THE UNSPOKEN CODE: ROMANCE</div>
     <div class="product-desc">60 Curated Cards with Native Audio. Real phrases used in romantic situations...</div>
     <div class="preview-container">
-      <!-- Your card preview code stays the same -->
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(2,'flirting')">Flirting</button>
+        <button class="tab-btn" onclick="switchTab(2,'dating')">Dating</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card2" onclick="flipCard(2)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french2">T'as un truc en plus</div>
+              <button class="audio-btn" onclick="speak(2, event)">Listen</button>
+            </div>
+            <div class="tap-hint">tap to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english2"></div>
+              <div class="meaning-text" id="meaning2"></div>
+            </div>
+            <div class="tap-hint">tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev2" onclick="prevCard(2)">← Prev</button>
+        <span class="progress"><span id="current2">1</span> / <span id="total2">30</span></span>
+        <button class="nav-btn" id="next2" onclick="nextCard(2)">Next →</button>
+      </div>
     </div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
@@ -91,7 +145,33 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">INSIDER'S DINE & WINE</div>
     <div class="product-desc">60 Curated Cards with Native Audio...</div>
     <div class="preview-container">
-      <!-- Your card preview code stays the same -->
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchTab(3,'wine')">Wine</button>
+        <button class="tab-btn" onclick="switchTab(3,'dine')">Dine</button>
+      </div>
+      <div class="card-wrapper">
+        <div class="card" id="card3" onclick="flipCard(3)">
+          <div class="card-face card-front">
+            <div class="card-content">
+              <div class="french-text" id="french3">Un verre de rouge, s'il vous plaît.</div>
+              <button class="audio-btn" onclick="speak(3, event)">Listen</button>
+            </div>
+            <div class="tap-hint">tap to flip</div>
+          </div>
+          <div class="card-face card-back">
+            <div class="card-content">
+              <div class="english-text" id="english3"></div>
+              <div class="meaning-text" id="meaning3"></div>
+            </div>
+            <div class="tap-hint">tap to flip back</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-section">
+        <button class="nav-btn" id="prev3" onclick="prevCard(3)">← Prev</button>
+        <span class="progress"><span id="current3">1</span> / <span id="total3">30</span></span>
+        <button class="nav-btn" id="next3" onclick="nextCard(3)">Next →</button>
+      </div>
     </div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
@@ -103,7 +183,6 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">PARIS DECODED</div>
-    <div style="font-size: 13px; letter-spacing: 1px; color: #aaa; margin-bottom: 20px; font-weight: 300; line-height: 1.6;">Private Intelligence Session</div>
     <div class="product-desc">Direct access to Rita Sant Valentinas...</div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none" data-product="e67iO">BOOK CONSULTING SESSION — €250.00</a>
@@ -116,9 +195,19 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
 </div>
 
-<!-- Your full JavaScript stays exactly the same -->
 <script>
-/* Your full script for decks, flipCard, speak, etc. stays here unchanged */
+/* Your full original JavaScript stays here unchanged */
+const decks = { ... your full decks object ... };
+const state = { ... };
+/* ... all your functions: getCards, updateCard, flipCard, etc. ... */
+</script>
+
+<script>
+window.addEventListener('load', function() {
+  updateCard(1);
+  updateCard(2);
+  updateCard(3);
+});
 </script>
 
 </body>
