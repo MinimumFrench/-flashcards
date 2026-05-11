@@ -112,7 +112,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
       </div>
       <div class="nav-section">
         <button class="nav-btn" id="prev1" onclick="prev1()">← Prev</button>
-        <span class="progress"><span id="current1">1</span> / <span id="total1">2</span></span>
+        <span class="progress"><span id="current1">1</span> / <span id="total1">5</span></span>
         <button class="nav-btn" id="next1" onclick="next1()">Next →</button>
       </div>
     </div>
@@ -127,7 +127,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <div class="section-inner">
     <div class="product-title">THE UNSPOKEN CODE ROMANCE</div>
     <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
-    <div class="product-desc">Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
+    <div class="product-desc">Real phrases used in romantic situations...</div>
    
     <div class="preview-container">
       <div class="tabs-container">
@@ -154,7 +154,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
       </div>
       <div class="nav-section">
         <button class="nav-btn" id="prev2" onclick="prev2()">← Prev</button>
-        <span class="progress"><span id="current2">1</span> / <span id="total2">2</span></span>
+        <span class="progress"><span id="current2">1</span> / <span id="total2">5</span></span>
         <button class="nav-btn" id="next2" onclick="next2()">Next →</button>
       </div>
     </div>
@@ -169,7 +169,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <div class="section-inner">
     <div class="product-title">INSIDER'S DINE & WINE</div>
     <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
-    <div class="product-desc">The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
+    <div class="product-desc">The essential phrases for restaurants, wine, and table moments...</div>
    
     <div class="preview-container">
       <div class="tabs-container">
@@ -196,7 +196,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
       </div>
       <div class="nav-section">
         <button class="nav-btn" id="prev3" onclick="prev3()">← Prev</button>
-        <span class="progress"><span id="current3">1</span> / <span id="total3">2</span></span>
+        <span class="progress"><span id="current3">1</span> / <span id="total3">5</span></span>
         <button class="nav-btn" id="next3" onclick="next3()">Next →</button>
       </div>
     </div>
@@ -211,7 +211,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   <div class="section-inner">
     <div class="product-title">PARIS DECODED</div>
     <div class="product-info">Private Intelligence Session — €250.00</div>
-    <div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director...</div>
+    <div class="product-desc">Direct access to Rita Sant Valentinas...</div>
     <div class="cta-buttons">
       <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none" data-product="e67iO">BOOK CONSULTING SESSION — €250.00</a>
     </div>
@@ -224,18 +224,68 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
 </div>
 
 <script>
-/* Your full script stays exactly the same */
-const flirt1 = [{ french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" }, { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }];
-const dating1 = [{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" }, { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }];
-const wine1 = [{ french: "On prend une bouteille ?", english: "Shall we get a bottle?", meaning: "Commitment move" }, { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }];
-const dine1 = [{ french: "Une table pour deux", english: "Table for two", meaning: "Entry line" }, { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }];
-const flirt2 = [{ french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." }, { french: "Tu es con", english: "You're crazy", meaning: "Playful tension" }];
-const dating2 = [{ french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" }, { french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" }];
-const wine3 = [{ french: "Vin de la maison", english: "House wine", meaning: "The insider's move" }, { french: "Sec", english: "Dry", meaning: "Knows what she wants" }];
-const dine3 = [{ french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" }, { french: "C'est bon", english: "It's good", meaning: "The simple compliment" }];
+/* Full script with 5 cards per tab */
+const flirt1 = [
+  { french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" },
+  { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" },
+  { french: "J'adore ton énergie", english: "I love your energy", meaning: "Positive vibe" },
+  { french: "Tu me fais sourire", english: "You make me smile", meaning: "Soft approach" },
+  { french: "On va boire un verre ?", english: "Shall we get a drink?", meaning: "Classic move" }
+];
+const dating1 = [
+  { french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" },
+  { french: "On se revoit ?", english: "See you again?", meaning: "Round two" },
+  { french: "T'es libre ce weekend ?", english: "Are you free this weekend?", meaning: "Planning ahead" },
+  { french: "J'ai passé un bon moment", english: "I had a good time", meaning: "After date" },
+  { french: "Tu veux continuer ?", english: "Do you want to continue?", meaning: "Direct" }
+];
+const wine1 = [
+  { french: "On prend une bouteille ?", english: "Shall we get a bottle?", meaning: "Commitment move" },
+  { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" },
+  { french: "Vin de la maison", english: "House wine", meaning: "The insider's move" },
+  { french: "Sec", english: "Dry", meaning: "Knows what she wants" },
+  { french: "Un rouge bien corsé", english: "A full-bodied red", meaning: "Wine expert" }
+];
+const dine1 = [
+  { french: "Une table pour deux", english: "Table for two", meaning: "Entry line" },
+  { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" },
+  { french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" },
+  { french: "C'est bon", english: "It's good", meaning: "The simple compliment" },
+  { french: "L'addition est pour moi", english: "The bill is on me", meaning: "Generous move" }
+];
+const flirt2 = [
+  { french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." },
+  { french: "Tu es con", english: "You're crazy", meaning: "Playful tension" },
+  { french: "T'es belle quand tu ris", english: "You're beautiful when you laugh", meaning: "Sweet" },
+  { french: "On danse ?", english: "Shall we dance?", meaning: "Fun move" },
+  { french: "Tu me plais vraiment", english: "I really like you", meaning: "Honest" }
+];
+const dating2 = [
+  { french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" },
+  { french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" },
+  { french: "Je peux t'embrasser ?", english: "Can I kiss you?", meaning: "Bold" },
+  { french: "Tu veux venir chez moi ?", english: "Want to come to my place?", meaning: "Straight" },
+  { french: "On reste en contact ?", english: "Shall we stay in touch?", meaning: "Soft close" }
+];
+const wine3 = [
+  { french: "Vin de la maison", english: "House wine", meaning: "The insider's move" },
+  { french: "Sec", english: "Dry", meaning: "Knows what she wants" },
+  { french: "Un Bourgogne ?", english: "A Burgundy?", meaning: "Sophisticated" },
+  { french: "Pas trop tannique", english: "Not too tannic", meaning: "Wine knowledge" },
+  { french: "On partage ?", english: "Shall we share?", meaning: "Intimate" }
+];
+const dine3 = [
+  { french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" },
+  { french: "C'est bon", english: "It's good", meaning: "The simple compliment" },
+  { french: "L'addition est pour moi", english: "The bill is on me", meaning: "Generous" },
+  { french: "Un café serré", english: "An espresso", meaning: "End of meal" },
+  { french: "Merci pour ce bon moment", english: "Thank you for this nice moment", meaning: "Grateful close" }
+];
+
 let tab1 = 'flirting', card1 = 0;
 let tab2 = 'flirting', card2 = 0;
 let tab3 = 'wine', card3 = 0;
+
 function getCards(prod, tab) {
   if (prod === 1) {
     if (tab === 'flirting') return flirt1;
@@ -246,6 +296,7 @@ function getCards(prod, tab) {
   if (prod === 2) return tab === 'flirting' ? flirt2 : dating2;
   if (prod === 3) return tab === 'wine' ? wine3 : dine3;
 }
+
 function updateCard(prod) {
   let tab, card, id;
   if (prod === 1) { tab = tab1; card = card1; id = '1'; }
@@ -259,9 +310,11 @@ function updateCard(prod) {
   document.getElementById('current' + id).textContent = card + 1;
   document.getElementById('total' + id).textContent = cards.length;
 }
+
 function flipCard(el) {
   el.style.transform = el.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
 }
+
 function speak(prod, e) {
   e.stopPropagation();
   let tab, card;
@@ -276,23 +329,25 @@ function speak(prod, e) {
   utterance.rate = 0.88;
   utterance.pitch = 1.08;
   const voices = speechSynthesis.getVoices();
-  let selectedVoice = voices.find(v => v.lang.startsWith('fr') &&
-    (v.name.includes('Amélie') || v.name.includes('Alice') || v.name.includes('Margot') ||
-     v.name.includes('Sophie') || v.name.includes('Camille') || v.name.toLowerCase().includes('female')));
+  let selectedVoice = voices.find(v => v.lang.startsWith('fr') && (v.name.includes('Amélie') || v.name.includes('Alice') || v.name.includes('Margot') || v.name.includes('Sophie') || v.name.includes('Camille') || v.name.toLowerCase().includes('female')));
   if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith('fr'));
   if (selectedVoice) utterance.voice = selectedVoice;
   speechSynthesis.speak(utterance);
 }
+
 if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
+
 function switchTab1(t) { tab1 = t; card1 = 0; updateCard(1); }
 function switchTab2(t) { tab2 = t; card2 = 0; updateCard(2); }
 function switchTab3(t) { tab3 = t; card3 = 0; updateCard(3); }
+
 function prev1() { if (card1 > 0) { card1--; updateCard(1); } }
 function next1() { const cards = getCards(1, tab1); if (card1 < cards.length - 1) { card1++; updateCard(1); } }
 function prev2() { if (card2 > 0) { card2--; updateCard(2); } }
 function next2() { const cards = getCards(2, tab2); if (card2 < cards.length - 1) { card2++; updateCard(2); } }
 function prev3() { if (card3 > 0) { card3--; updateCard(3); } }
 function next3() { const cards = getCards(3, tab3); if (card3 < cards.length - 1) { card3++; updateCard(3); } }
+
 updateCard(1);
 updateCard(2);
 updateCard(3);
