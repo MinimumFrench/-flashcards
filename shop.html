@@ -8,61 +8,46 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-
 .header { padding: 50px 24px 30px; text-align: center; border-bottom: 1px solid #222; }
 .header-title { font-size: 28px; letter-spacing: 4px; text-transform: uppercase; font-weight: 400; line-height: 1.1; }
 .header-subtitle { font-size: 13px; letter-spacing: 1px; color: #aaa; margin-top: 12px; font-weight: 300; }
-
 .product-section { padding: 50px 24px; border-bottom: 1px solid #222; }
 .section-inner { max-width: 600px; margin: 0 auto; }
-
 .product-title { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 400; text-align: center; }
 .product-info { font-size: 17px; color: #ddd; text-align: center; margin-bottom: 30px; line-height: 1.5; font-weight: 400; }
 .product-desc { font-size: 14px; color: #aaa; margin-bottom: 40px; line-height: 1.6; text-align: center; }
-
 .preview-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
 .tabs-container { display: flex; gap: 16px; margin-bottom: 20px; justify-content: center; flex-wrap: wrap; }
 .tab-btn { background: transparent; color: #666; border: none; padding: 8px 0; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; }
 .tab-btn.active { color: #fff; border-bottom: 1px solid #fff; }
-
 .card-wrapper { width: 100%; max-width: 420px; perspective: 1200px; }
 .card { width: 100%; height: 540px; position: relative; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
 .card.flipped { transform: rotateY(180deg); }
-
 .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border: 1px solid #333; display: flex; flex-direction: column; justify-content: space-between; padding: 40px 28px; background: #000; }
 .card-back { transform: rotateY(180deg); }
-
 .card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-
 .french-text, .english-text { font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 24px; }
 .audio-btn { background: transparent; color: #fff; border: 1px solid #fff; padding: 8px 24px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
 .audio-btn:hover { background: #fff; color: #000; }
-
 .meaning-text { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #aaa; }
 .tap-hint { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-align: center; margin-top: auto; }
-
 .nav-section { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; width: 100%; max-width: 420px; }
 .nav-btn { background: transparent; border: 1px solid #555; padding: 8px 16px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; color: #999; }
 .nav-btn:hover { background: #fff; color: #000; border-color: #fff; }
 .nav-btn:disabled { color: #444; border-color: #333; cursor: default; }
 .progress { font-size: 12px; color: #999; }
-
 .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
-
-/* Normal buttons for the card decks */
-.payhip-buy-button { 
-  background: #fff !important; 
-  color: #000 !important; 
-  border: 1px solid #fff !important; 
-  padding: 12px 32px !important; 
-  font-size: 11px !important; 
-  letter-spacing: 2px !important; 
-  text-transform: uppercase !important; 
-  font-weight: 500 !important; 
+.payhip-buy-button {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid #fff !important;
+  padding: 12px 32px !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
 }
-
-/* Special clean "Learn More" button for the €250 session */
 .learn-more-btn {
   background: #fff;
   color: #000;
@@ -75,18 +60,12 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
   text-decoration: none;
   display: inline-block;
 }
-
-.learn-more-btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-.footer { 
-  padding: 50px 24px 40px; 
-  text-align: center; 
-  display: flex; 
-  justify-content: center; 
-  gap: 40px; 
+.footer {
+  padding: 50px 24px 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
 }
 .footer a { color: #fff; }
 .footer a:hover { color: #aaa; }
@@ -105,7 +84,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">THE COMPLETE PARIS SET</div>
     <div class="product-info">120+ Curated Cards with Native Audio — €27.00</div>
     <div class="product-desc">A full set of carefully selected phrases for dating, dining, wine, and social confidence in Paris. Instant access via private interface. Own the city.</div>
-    
+   
     <div class="preview-container">
       <div class="tabs-container">
         <button class="tab-btn active" onclick="switchTab1('flirting')">Flirting</button>
@@ -137,9 +116,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
         <button class="nav-btn" id="next1" onclick="next1()">Next →</button>
       </div>
     </div>
-
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now</a>
+      <a href="https://payhip.com/b/z29J1" class="payhip-buy-button" data-theme="none" data-product="z29J1">Buy Now — €27.00</a>
     </div>
   </div>
 </div>
@@ -150,7 +128,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">THE UNSPOKEN CODE ROMANCE</div>
     <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
     <div class="product-desc">Real phrases used in romantic situations — built for timing, tension, and quiet confidence. Master the lines locals actually use. Instant access via private interface. Know what to say when it matters most.</div>
-    
+   
     <div class="preview-container">
       <div class="tabs-container">
         <button class="tab-btn active" onclick="switchTab2('flirting')">Flirting</button>
@@ -180,9 +158,8 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
         <button class="nav-btn" id="next2" onclick="next2()">Next →</button>
       </div>
     </div>
-
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now</a>
+      <a href="https://payhip.com/b/pJcgl" class="payhip-buy-button" data-theme="none" data-product="pJcgl">Buy Now — €16.99</a>
     </div>
   </div>
 </div>
@@ -193,7 +170,7 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
     <div class="product-title">INSIDER'S DINE & WINE</div>
     <div class="product-info">60 Curated Cards with Native Audio — €16.99</div>
     <div class="product-desc">The essential phrases for restaurants, wine, and table moments where presence matters. Navigate the ritual of the Parisian table with ease. Instant access via private interface. Order with confidence.</div>
-    
+   
     <div class="preview-container">
       <div class="tabs-container">
         <button class="tab-btn active" onclick="switchTab3('wine')">Wine</button>
@@ -223,54 +200,42 @@ body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, 
         <button class="nav-btn" id="next3" onclick="next3()">Next →</button>
       </div>
     </div>
-
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now</a>
+      <a href="https://payhip.com/b/RZeUL" class="payhip-buy-button" data-theme="none" data-product="RZeUL">Buy Now — €16.99</a>
     </div>
   </div>
 </div>
 
-<!-- PARIS DECODED - Learn More (now correctly linked) -->
+<!-- PARIS DECODED -->
 <div class="product-section">
   <div class="section-inner">
     <div class="product-title">PARIS DECODED</div>
     <div class="product-info">Private Intelligence Session — €250.00</div>
-    <div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director. Having spent years at the intersection of New York's pace and Parisian tradition, she delivers precise insight into the city's unspoken codes, etiquette, and interior logic.</div>
-    <div class="product-desc" style="margin-top:20px;">90-minute private intelligence session. Available via Video Call or In-Person (Paris). Immediate calendar access. Tailored to your specific social or travel situation.</div>
-    <div class="product-desc" style="margin-top:20px; font-weight:400;">Paris doesn't reward trying. It rewards restraint.</div>
-
+    <div class="product-desc">Direct access to Rita Sant Valentinas — author of Minimum French, Maximum Parisian and Creative Director...</div>
     <div class="cta-buttons">
-      <a href="https://payhip.com/b/e67iO" class="learn-more-btn">Learn More</a>
+      <a href="https://payhip.com/b/e67iO" class="payhip-buy-button" data-theme="none" data-product="e67iO">BOOK CONSULTING SESSION — €250.00</a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank" aria-label="LinkedIn">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v9.37h2.79v-5.18c0-.8.6-1.45 1.34-1.45.74 0 1.34.65 1.34 1.45v5.18h2.79zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.68-1.68-1.68-.93 0-1.68.75-1.68 1.68 0 .93.75 1.68 1.68 1.68zM8.27 19.5V9.13H5.5v10.37h2.77z"/></svg>
-  </a>
-  <a href="https://instagram.com/ritadefab" target="_blank" aria-label="Instagram">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.645.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.33.56 2.465.292 6.813.23 8.1.23 15.9.292 17.187c.268 4.348 2.403 6.483 6.761 6.74 1.28.058 1.688.072 4.947.072 3.259 0 3.668-.014 4.947-.072 4.358-.257 6.493-2.392 6.761-6.74.058-1.287.058-9.087 0-10.374-.268-4.348-2.403-6.483-6.761-6.74C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
-  </a>
+  <a href="https://www.linkedin.com/in/santvalentinas/" target="_blank">LinkedIn</a>
+  <a href="https://instagram.com/ritadefab" target="_blank">Instagram</a>
 </div>
 
 <script>
-/* Full script (2 cards per tab) */
+/* Your full script stays exactly the same */
 const flirt1 = [{ french: "T'as un truc en plus", english: "You have something extra", meaning: "The compliment that lands" }, { french: "T'es mon style", english: "You're my type", meaning: "Direct hit" }];
 const dating1 = [{ french: "Tu me plais bien", english: "I like you", meaning: "Soft but clear" }, { french: "On se revoit ?", english: "See you again?", meaning: "Round two" }];
 const wine1 = [{ french: "On prend une bouteille ?", english: "Shall we get a bottle?", meaning: "Commitment move" }, { french: "Santé !", english: "Cheers!", meaning: "The one everyone uses" }];
 const dine1 = [{ french: "Une table pour deux", english: "Table for two", meaning: "Entry line" }, { french: "L'addition, s'il vous plaît", english: "Check, please", meaning: "Exit move" }];
-
 const flirt2 = [{ french: "J'aime ton vibe", english: "I love your vibe", meaning: "Modern. Confident." }, { french: "Tu es con", english: "You're crazy", meaning: "Playful tension" }];
 const dating2 = [{ french: "Tu me fais rire", english: "You make me laugh", meaning: "The connector" }, { french: "Tu fais quoi ce soir ?", english: "What are you doing tonight?", meaning: "Direct move" }];
-
 const wine3 = [{ french: "Vin de la maison", english: "House wine", meaning: "The insider's move" }, { french: "Sec", english: "Dry", meaning: "Knows what she wants" }];
 const dine3 = [{ french: "Saignant, s'il vous plaît", english: "Rare, please", meaning: "How Parisians order" }, { french: "C'est bon", english: "It's good", meaning: "The simple compliment" }];
-
 let tab1 = 'flirting', card1 = 0;
 let tab2 = 'flirting', card2 = 0;
 let tab3 = 'wine', card3 = 0;
-
 function getCards(prod, tab) {
   if (prod === 1) {
     if (tab === 'flirting') return flirt1;
@@ -281,56 +246,44 @@ function getCards(prod, tab) {
   if (prod === 2) return tab === 'flirting' ? flirt2 : dating2;
   if (prod === 3) return tab === 'wine' ? wine3 : dine3;
 }
-
 function updateCard(prod) {
   let tab, card, id;
   if (prod === 1) { tab = tab1; card = card1; id = '1'; }
   if (prod === 2) { tab = tab2; card = card2; id = '2'; }
   if (prod === 3) { tab = tab3; card = card3; id = '3'; }
-
   const cards = getCards(prod, tab);
   const c = cards[card];
-
   document.getElementById('french' + id).textContent = c.french;
   document.getElementById('english' + id).textContent = c.english;
   document.getElementById('meaning' + id).textContent = c.meaning;
   document.getElementById('current' + id).textContent = card + 1;
   document.getElementById('total' + id).textContent = cards.length;
 }
-
 function flipCard(el) {
   el.style.transform = el.style.transform === 'rotateY(180deg)' ? 'rotateY(0deg)' : 'rotateY(180deg)';
 }
-
 function speak(prod, e) {
   e.stopPropagation();
   let tab, card;
   if (prod === 1) { tab = tab1; card = card1; }
   if (prod === 2) { tab = tab2; card = card2; }
   if (prod === 3) { tab = tab3; card = card3; }
-
   const cards = getCards(prod, tab);
   const text = cards[card].french;
-
   speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'fr-FR';
   utterance.rate = 0.88;
   utterance.pitch = 1.08;
-
   const voices = speechSynthesis.getVoices();
-  let selectedVoice = voices.find(v => v.lang.startsWith('fr') && 
-    (v.name.includes('Amélie') || v.name.includes('Alice') || v.name.includes('Margot') || 
+  let selectedVoice = voices.find(v => v.lang.startsWith('fr') &&
+    (v.name.includes('Amélie') || v.name.includes('Alice') || v.name.includes('Margot') ||
      v.name.includes('Sophie') || v.name.includes('Camille') || v.name.toLowerCase().includes('female')));
-
   if (!selectedVoice) selectedVoice = voices.find(v => v.lang.startsWith('fr'));
   if (selectedVoice) utterance.voice = selectedVoice;
-
   speechSynthesis.speak(utterance);
 }
-
 if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-
 function switchTab1(t) { tab1 = t; card1 = 0; updateCard(1); }
 function switchTab2(t) { tab2 = t; card2 = 0; updateCard(2); }
 function switchTab3(t) { tab3 = t; card3 = 0; updateCard(3); }
@@ -340,7 +293,6 @@ function prev2() { if (card2 > 0) { card2--; updateCard(2); } }
 function next2() { const cards = getCards(2, tab2); if (card2 < cards.length - 1) { card2++; updateCard(2); } }
 function prev3() { if (card3 > 0) { card3--; updateCard(3); } }
 function next3() { const cards = getCards(3, tab3); if (card3 < cards.length - 1) { card3++; updateCard(3); } }
-
 updateCard(1);
 updateCard(2);
 updateCard(3);
